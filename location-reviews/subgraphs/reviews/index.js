@@ -8,7 +8,6 @@ const resolvers = require('./resolvers');
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema([{ typeDefs: parse(typeDefs), resolvers }]),
-  mocks: true,
   dataSources: () => {
     return {
       // TODO: add data sources here
