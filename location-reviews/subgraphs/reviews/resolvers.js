@@ -12,5 +12,16 @@ const resolvers = {
       return [{ id: 1, rating: 5, comment: 'hello world' }];
     },
   },
+  Mutation: {
+    review() {
+      return 'ok'; // why do we need to return something here?
+    },
+  },
+  ReviewMutation: {
+    submitReview(_, { review }) {
+      console.log('test');
+      return { code: 200, success: true, message: 'success', review: { id: 1, ...review } };
+    },
+  },
 };
 module.exports = resolvers;
