@@ -19,7 +19,6 @@ const resolvers = {
   },
   ReviewMutation: {
     submitReview(_, { review }) {
-      console.log('test');
       return { code: 200, success: true, message: 'success', review: { id: 1, ...review } };
     },
   },
