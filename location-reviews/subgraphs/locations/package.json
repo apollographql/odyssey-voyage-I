@@ -1,0 +1,19 @@
+{
+  "name": "location-reviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/subgraph": "^0.1.2",
+    "apollo-server": "^3.4.0",
+    "fs": "0.0.1-security",
+    "graphql": "^15.6.1",
+    "nodemon": "^2.0.13"
+  }
+}
