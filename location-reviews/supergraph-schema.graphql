@@ -1,0 +1,118 @@
+schema
+  @core(feature: "https://specs.apollo.dev/core/v0.2"),
+  @core(feature: "https://specs.apollo.dev/join/v0.1", for: EXECUTION)
+{
+  query: Query
+  mutation: Mutation
+}
+
+directive @core(as: String, feature: String!, for: core__Purpose) repeatable on SCHEMA
+
+directive @join__field(graph: join__Graph, provides: join__FieldSet, requires: join__FieldSet) on FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__owner(graph: join__Graph!) on INTERFACE | OBJECT
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on INTERFACE | OBJECT
+
+type Location
+  @join__owner(graph: LOCATIONS)
+  @join__type(graph: LOCATIONS, key: "id")
+  @join__type(graph: REVIEWS, key: "id")
+{
+  """A short description about the location"""
+  description: String! @join__field(graph: LOCATIONS)
+  id: ID! @join__field(graph: LOCATIONS)
+
+  """The name of the location"""
+  name: String! @join__field(graph: LOCATIONS)
+
+  """The calculated overall rating based on all reviews"""
+  overallRating: Float @join__field(graph: REVIEWS)
+
+  """The location's main photo as a URL"""
+  photo: String! @join__field(graph: LOCATIONS)
+
+  """All submitted reviews about this location"""
+  reviews: [Review]! @join__field(graph: REVIEWS)
+}
+
+type Mutation {
+  review: ReviewMutation @join__field(graph: REVIEWS)
+}
+
+interface MutationResponse {
+  """Similar to HTTP status code, represents the status of the mutation"""
+  code: Int!
+
+  """Human-readable message for the UI"""
+  message: String!
+
+  """Indicates whether the mutation was successful"""
+  success: Boolean!
+}
+
+type Query {
+  """The details of a specific location"""
+  location(id: ID!): Location @join__field(graph: LOCATIONS)
+
+  """
+  The full list of locations presented by the Interplanetary Space Tourism department
+  """
+  locations: [Location]! @join__field(graph: LOCATIONS)
+}
+
+type Review {
+  """Written text"""
+  comment: String
+  id: ID!
+
+  """A number from 1 - 5 with 1 being lowest and 5 being highest"""
+  rating: Int
+}
+
+input ReviewInput {
+  """Written text"""
+  comment: String!
+
+  """A number from 1 - 5 with 1 being lowest and 5 being highest"""
+  rating: Int!
+}
+
+type ReviewMutation {
+  submitReview(review: ReviewInput): SubmitReviewResponse
+}
+
+type SubmitReviewResponse implements MutationResponse {
+  """Similar to HTTP status code, represents the status of the mutation"""
+  code: Int!
+
+  """Human-readable message for the UI"""
+  message: String!
+
+  """Newly created review"""
+  review: Review
+
+  """Indicates whether the mutation was successful"""
+  success: Boolean!
+}
+
+enum core__Purpose {
+  """
+  `EXECUTION` features provide metadata necessary to for operation execution.
+  """
+  EXECUTION
+
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  LOCATIONS @join__graph(name: "locations" url: "http://localhost:4001")
+  REVIEWS @join__graph(name: "reviews" url: "http://localhost:4002")
+}

@@ -1,0 +1,9 @@
+subgraphs:
+  locations:
+    routing_url: http://localhost:4001
+    schema:
+      file: ./subgraphs/locations/locations.graphql
+  reviews:
+    routing_url: http://localhost:4002
+    schema:
+      file: ./subgraphs/reviews/reviews.graphql
