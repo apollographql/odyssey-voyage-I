@@ -4,6 +4,7 @@ import Stars from '../components/Stars';
 import { Box, Flex, Heading, Image, Stack, StackDivider, Text } from '@chakra-ui/react';
 import { gql, useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import SubmitReview from '../components/SubmitReview';
 
 export const GET_LOCATION_DETAILS = gql`
   query getLocationDetails {
@@ -38,7 +39,6 @@ export default function Location() {
               <Heading as="h1" size="lg">
                 {name}
               </Heading>
-              <Stars size={20} rating={overallRating} />
               <Flex direction="row" justify="space-between">
                 <Text fontSize="lg" fontWeight="regular" mr="1">
                   {description}
@@ -49,6 +49,7 @@ export default function Location() {
                 <Heading as="h2" size="md" mb="2">
                   Reviews
                 </Heading>
+                <SubmitReview locationId={id} />
                 <Stack direction="column" spacing="4" divider={<StackDivider borderColor="gray.200" />}>
                   {reviews.length === 0 ? (
                     <Text>No reviews yet</Text>

@@ -14,7 +14,7 @@ const resolvers = {
   },
   Mutation: {
     review() {
-      return 'ok'; // why do we need to return something here?
+      return {}; // why do we need to return something here?
     },
   },
   ReviewMutation: {
