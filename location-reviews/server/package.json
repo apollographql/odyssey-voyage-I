@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon .",
     "start:subgraphs": "npm start --prefix subgraphs/locations & npm start --prefix subgraphs/reviews",
+    "postinstall": "npm install --prefix subgraphs/locations && npm install --prefix subgraphs/reviews",
     "compose": "rover supergraph compose --config supergraph-config.yaml  > supergraph-schema.graphql"
   },
   "keywords": [],
