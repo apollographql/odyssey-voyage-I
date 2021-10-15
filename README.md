@@ -11,4 +11,9 @@ To run the server:
 
 Try out queries! Queries are available in the workbench file.
 
+To run the client:
+
+1. Navigate to `location-reviews/client`.
+1. Run `npm install && npm start`. This will install all packagest in the client and start the application in localhost:3000.
+
 ### book-tours
