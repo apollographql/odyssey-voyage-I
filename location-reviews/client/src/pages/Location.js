@@ -7,8 +7,8 @@ import { useParams } from 'react-router-dom';
 import SubmitReview from '../components/SubmitReview';
 
 export const GET_LOCATION_DETAILS = gql`
-  query getLocationDetails {
-    location(id: "location-1") {
+  query getLocationDetails($locationId: ID!) {
+    location(id: $locationId) {
       id
       name
       description
@@ -25,10 +25,10 @@ export const GET_LOCATION_DETAILS = gql`
 export default function Location() {
   const { id } = useParams();
 
-  const { loading, error, data } = useQuery(GET_LOCATION_DETAILS, { variables: { id } });
+  const { loading, error, data } = useQuery(GET_LOCATION_DETAILS, { variables: { locationId: id } });
   if (loading) return 'Loading...';
   if (error) return `uhoh error! ${error.message}`;
-  const { name, description, photo, reviews, overallRating } = data?.location;
+  const { name, description, photo, reviews } = data?.location;
   return (
     <Layout>
       {data && (
@@ -57,7 +57,7 @@ export default function Location() {
                     reviews.map(({ comment, rating }) => (
                       <Stack direction="column" spacing="1" key={rating}>
                         <Stars size={16} rating={rating} />
-                        <Text>{rating}</Text>
+                        <Text>{comment}</Text>
                       </Stack>
                     ))
                   )}
