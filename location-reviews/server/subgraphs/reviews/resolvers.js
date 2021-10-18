@@ -1,15 +1,21 @@
+let reviews = [
+  { id: 1, rating: 5, comment: 'hello location1', locationId: '1' },
+  { id: 2, rating: 2, comment: 'hellooooo', locationId: '1' },
+  { id: 3, rating: 3, comment: 'hi', locationId: '1' },
+];
+
 const resolvers = {
   Review: {
-    __resolveReference(parent, args) {
-      return { id: 1, rating: 5, comment: 'hello world' };
+    __resolveReference({ id }) {
+      return reviews.find((r) => r.id === id);
     },
   },
   Location: {
     overallRating() {
       return 3;
     },
-    reviews() {
-      return [{ id: 1, rating: 5, comment: 'hello world' }];
+    reviews({ id }) {
+      return reviews.filter((r) => r.locationId === id);
     },
   },
   Mutation: {
@@ -19,7 +25,9 @@ const resolvers = {
   },
   ReviewMutation: {
     submitReview(_, { review }) {
-      return { code: 200, success: true, message: 'success', review: { id: 1, ...review } };
+      const newReview = { id: reviews.length + 1, ...review };
+      reviews = [...reviews, newReview];
+      return { code: 200, success: true, message: 'success', review: newReview };
     },
   },
 };

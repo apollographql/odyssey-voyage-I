@@ -1,18 +1,19 @@
+const locations = [
+  { id: '1', name: 'planet1', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' },
+  { id: '2', name: 'planet2', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' },
+];
 const resolvers = {
   Query: {
     locations() {
-      return [
-        { id: 1, name: 'planet', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' },
-        { id: 2, name: 'planet', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' },
-      ];
+      return locations;
     },
     location(_, { id }) {
-      return { id, name: 'planet', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' };
+      return locations.find((l) => l.id === id);
     },
   },
   Location: {
-    __resolveReference(parent, args) {
-      return { id: 1, name: 'planet', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' };
+    __resolveReference({ id }, args) {
+      return locations.find((l) => l.id === id);
     },
   },
 };
