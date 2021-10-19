@@ -1,27 +1,20 @@
-let reviews = [
-  { id: 1, rating: 5, comment: 'hello location1', locationId: '1' },
-  { id: 2, rating: 2, comment: 'hellooooo', locationId: '1' },
-  { id: 3, rating: 3, comment: 'hi', locationId: '1' },
-];
-
 const resolvers = {
   Review: {
-    __resolveReference({ id }) {
-      return reviews.find((r) => r.id === id);
+    __resolveReference({ id }, { dataSources }) {
+      return dataSources.reviewsAPI.getReview(id);
     },
   },
   Location: {
-    overallRating() {
-      return 3;
+    overallRating({ id }, _, { dataSources }) {
+      return dataSources.reviewsAPI.getOverallRatingForLocation(id);
     },
-    reviews({ id }) {
-      return reviews.filter((r) => r.locationId === id);
+    reviews({ id }, _, { dataSources }) {
+      return dataSources.reviewsAPI.getReviewsForLocation(id);
     },
   },
   Mutation: {
-    submitReview(_, { review }) {
-      const newReview = { id: reviews.length + 1, ...review };
-      reviews = [...reviews, newReview];
+    submitReview(_, { review }, { dataSources }) {
+      const newReview = dataSources.reviewsAPI.submitReviewForLocation(review);
       return { code: 200, success: true, message: 'success', review: newReview };
     },
   },

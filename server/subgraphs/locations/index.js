@@ -5,12 +5,13 @@ const { parse } = require('graphql');
 
 const typeDefs = readFileSync('./locations.graphql').toString();
 const resolvers = require('./resolvers');
+const LocationsAPI = require('./datasources/LocationsApi');
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema([{ typeDefs: parse(typeDefs), resolvers }]),
   dataSources: () => {
     return {
-      // TODO: add data sources here
+      locationsAPI: new LocationsAPI(),
     };
   },
 });

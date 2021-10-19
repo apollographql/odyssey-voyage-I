@@ -1,19 +1,15 @@
-const locations = [
-  { id: '1', name: 'planet1', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' },
-  { id: '2', name: 'planet2', description: 'hello', photo: 'https://source.unsplash.com/featured/?space' },
-];
 const resolvers = {
   Query: {
-    locations() {
-      return locations;
+    locations(_, __, { dataSources }) {
+      return dataSources.locationsAPI.getAllLocations();
     },
-    location(_, { id }) {
-      return locations.find((l) => l.id === id);
+    location(_, { id }, { dataSources }) {
+      return dataSources.locationsAPI.getLocation(id);
     },
   },
   Location: {
-    __resolveReference({ id }, args) {
-      return locations.find((l) => l.id === id);
+    __resolveReference({ id }, _, { dataSources }) {
+      return dataSources.locationsAPI.getLocation(id);
     },
   },
 };
