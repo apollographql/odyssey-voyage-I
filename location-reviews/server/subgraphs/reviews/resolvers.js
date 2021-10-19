@@ -19,11 +19,6 @@ const resolvers = {
     },
   },
   Mutation: {
-    review() {
-      return {}; // why do we need to return something here?
-    },
-  },
-  ReviewMutation: {
     submitReview(_, { review }) {
       const newReview = { id: reviews.length + 1, ...review };
       reviews = [...reviews, newReview];

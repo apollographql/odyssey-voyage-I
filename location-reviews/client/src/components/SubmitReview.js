@@ -5,16 +5,14 @@ import { GET_LOCATION_DETAILS } from '../pages/Location';
 
 export const SUBMIT_REVIEW = gql`
   mutation submitReview($review: ReviewInput) {
-    review {
-      submitReview(review: $review) {
-        code
-        success
-        message
-        review {
-          id
-          comment
-          rating
-        }
+    submitReview(review: $review) {
+      code
+      success
+      message
+      review {
+        id
+        comment
+        rating
       }
     }
   }

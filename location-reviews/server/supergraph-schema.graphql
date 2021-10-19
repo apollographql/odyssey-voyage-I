@@ -39,7 +39,7 @@ type Location
 }
 
 type Mutation {
-  review: ReviewMutation @join__field(graph: REVIEWS)
+  submitReview(review: ReviewInput): SubmitReviewResponse @join__field(graph: REVIEWS)
 }
 
 interface MutationResponse {
@@ -81,10 +81,6 @@ input ReviewInput {
 
   """A number from 1 - 5 with 1 being lowest and 5 being highest"""
   rating: Int!
-}
-
-type ReviewMutation {
-  submitReview(review: ReviewInput): SubmitReviewResponse
 }
 
 type SubmitReviewResponse implements MutationResponse {

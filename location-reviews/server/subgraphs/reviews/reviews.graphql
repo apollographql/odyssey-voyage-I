@@ -1,5 +1,5 @@
 type Mutation {
-  review: ReviewMutation
+  submitReview(review: ReviewInput): SubmitReviewResponse
 }
 
 extend type Location @key(fields: "id") {
@@ -16,10 +16,6 @@ type Review {
   comment: String
   "A number from 1 - 5 with 1 being lowest and 5 being highest"
   rating: Int
-}
-
-type ReviewMutation {
-  submitReview(review: ReviewInput): SubmitReviewResponse
 }
 
 input ReviewInput {
