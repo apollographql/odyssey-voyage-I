@@ -21,7 +21,7 @@ export default function LocationCard({ id, name, photo, overallRating }) {
           {name}
         </Heading>
         <Flex direction="row" justify="space-between">
-          {overallRating && <Stars size={20} rating={overallRating} />}
+          <Stars size={20} rating={overallRating} />
         </Flex>
       </Flex>
     </Box>
