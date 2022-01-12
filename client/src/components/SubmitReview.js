@@ -1,7 +1,10 @@
-import { gql, useMutation } from '@apollo/client';
-import React, { useState } from 'react';
-import { Input, Select, Button } from '@chakra-ui/react';
-import { GET_LOCATION_DETAILS } from '../pages/Location';
+import Button from './Button.js';
+import PropTypes from 'prop-types';
+import React, {useState} from 'react';
+import ReviewRating from './ReviewRating';
+import {Flex, Stack, Text, Textarea} from '@chakra-ui/react';
+import {GET_LOCATION_DETAILS} from '../pages/Location';
+import {gql, useMutation} from '@apollo/client';
 
 export const SUBMIT_REVIEW = gql`
   mutation submitReview($review: ReviewInput) {
@@ -18,35 +21,46 @@ export const SUBMIT_REVIEW = gql`
   }
 `;
 
-export default function SubmitReview({ locationId }) {
+export default function SubmitReview({locationId}) {
   const [comment, setComment] = useState('');
-  const [rating, setRating] = useState(5);
-  const handleChange = (event) => setComment(event.target.value);
+  const [rating, setRating] = useState(null);
+  const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
+  const handleChange = event => setComment(event.target.value);
 
   const [submitReview] = useMutation(SUBMIT_REVIEW, {
-    variables: { review: { comment, rating: parseInt(rating, 10), locationId: locationId } },
+    variables: {
+      review: {comment, rating: parseInt(rating, 10), locationId}
+    },
     refetchQueries: [
-      { query: GET_LOCATION_DETAILS, variables: { locationId: locationId } }, // DocumentNode object parsed with gql
-      'getLocationDetails', // Query name
+      {query: GET_LOCATION_DETAILS, variables: {locationId}}, // DocumentNode object parsed with gql
+      'getLocationDetails' // Query name
     ],
+    onCompleted: () => setHasSubmittedForm(true)
   });
 
-  return (
-    <div>
-      <Input placeholder="Write your review here" size="lg" value={comment} onChange={handleChange} />
-      <Select
-        value={rating}
-        onChange={(e) => {
-          setRating(e.target.value);
-        }}
-      >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </Select>
-      <Button onClick={submitReview}>Submit Review</Button>
-    </div>
+  return !hasSubmittedForm ? (
+    <Stack>
+      <>
+        <ReviewRating rating={rating} setReviewsInput={setRating} />
+        <Textarea
+          placeholder="Write your review here"
+          size="lg"
+          value={comment}
+          onChange={handleChange}
+        />
+      </>
+      ) :
+      <Flex justify="right">
+        <Button isDisabled={!rating || !comment} onClick={submitReview}>
+          Submit Review
+        </Button>
+      </Flex>
+    </Stack>
+  ) : (
+    <Text as="i">Thanks for writing a review!</Text>
   );
 }
+
+SubmitReview.propTypes = {
+  locationId: PropTypes.string
+};
