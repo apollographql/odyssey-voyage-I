@@ -1,5 +1,5 @@
 type Query{
-  latestReviews: [Review]!
+  latestReviews: [Review!]!
 }
 
 type Mutation {
