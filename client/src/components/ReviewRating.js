@@ -7,16 +7,19 @@ import {IoStar, IoStarHalf, IoStarOutline} from 'react-icons/io5';
 // https://www.npmjs.com/package/react-rating-stars-component
 
 export default function ReviewRating({
+  edit = false,
   isHalf = false,
-  rating = null,
+  rating = 0,
   setReviewsInput = () => {},
-  size = 32
+  size = 32,
+  isLight = false
 }) {
+  const color = isLight ? theme.colors.brand.white : theme.colors.brand.black;
   const starConfig = {
     size,
     isHalf,
-    color: theme.colors.brand.black,
-    activeColor: theme.colors.brand.black,
+    color,
+    activeColor: color,
     emptyIcon: <IoStarOutline />,
     halfIcon: <IoStarHalf />,
     filledIcon: <IoStar />
@@ -24,8 +27,9 @@ export default function ReviewRating({
 
   return (
     <ReactStars
+      a11y
       count={5}
-      edit={!rating}
+      edit={edit}
       value={rating}
       onChange={setReviewsInput}
       {...starConfig}
@@ -37,5 +41,7 @@ ReviewRating.propTypes = {
   rating: PropTypes.number,
   setReviewsInput: PropTypes.func,
   size: PropTypes.number,
-  isHalf: PropTypes.bool
+  isHalf: PropTypes.bool,
+  edit: PropTypes.bool,
+  isLight: PropTypes.bool
 };

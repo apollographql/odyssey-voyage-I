@@ -1,32 +1,24 @@
-import PropTypes from 'prop-types';
-import {Box, Heading, Text, VStack} from '@chakra-ui/react';
+import {Box, HStack, Text} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
+import {Logo} from './Logo';
 
-export default function Nav({isLight}) {
-  const txtColor = isLight ? '#fff' : '#000';
-
+export default function Nav() {
   return (
-    <Box px="2" py="8" borderTopWidth="20px" borderColor="brand.200">
-      <Box as={Link} to="/">
-        <VStack justify="space-between" spacing="1">
-          <Heading
-            fontSize="5xl"
-            fontFamily="sans-serif"
-            letterSpacing="widest"
-            fontWeight="extrabold"
-            textColor={txtColor}
-          >
-            flyby
-          </Heading>
-          <Text fontWeight="extrabold" textColor={txtColor}>
-            Location Reviews
-          </Text>
-        </VStack>
-      </Box>
+    <Box as={Link} to="/">
+      <HStack p="4">
+        <Logo />
+        <Text
+          textTransform={'uppercase'}
+          fontWeight="600"
+          fontSize="14px"
+          color="brand.400"
+          letterSpacing="1.4px"
+          backgroundColor="brand.100"
+          px="1"
+        >
+          flyby
+        </Text>
+      </HStack>
     </Box>
   );
 }
-
-Nav.propTypes = {
-  isLight: PropTypes.bool
-};

@@ -1,41 +1,39 @@
 import PropTypes from 'prop-types';
 import ReviewRating from './ReviewRating';
-import {Box, Flex, Heading, Text} from '@chakra-ui/react';
+import {Box, Heading, Stack, Text} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
 
-export default function LocationCard({rating, comment, location}) {
+export default function ReviewCard({rating, comment, location}) {
+  const highlightStyles = {
+    opacity: '80%',
+    cursor: 'pointer'
+  };
+
   return (
     <Box
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
-      _hover={{
-        background: 'gray.100',
-        cursor: 'pointer'
-      }}
+      color="brand.white"
+      p="6"
+      backgroundColor="brand.midnight"
+      _hover={highlightStyles}
+      _focus={highlightStyles}
       as={Link}
       to={`/location/${location.id}`}
     >
-      <Flex
-        height="100%"
-        direction="column"
-        p="3"
-        justify="space-between"
-        minH="120px"
-      >
-        <Text mb={2}>{comment}</Text>
-        <Flex direction="row" width="100%" justify="space-between">
-          <ReviewRating size={12} rating={rating} />
-          <Heading as="h3" size="md">
-            {location.name}
-          </Heading>
-        </Flex>
-      </Flex>
+      <Stack spacing="32px" my="2" direction="column" justify="space-between">
+        <ReviewRating isLight size={20} rating={rating} />
+        <Heading as="h3" size="md">
+          {location.name}
+        </Heading>
+      </Stack>
+      <Text noOfLines={3}>{comment}</Text>
     </Box>
   );
 }
 
-LocationCard.propTypes = {
+ReviewCard.propTypes = {
   id: PropTypes.string,
   comment: PropTypes.string,
   rating: PropTypes.number,

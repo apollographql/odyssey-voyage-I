@@ -40,15 +40,15 @@ export default function SubmitReview({locationId}) {
 
   return !hasSubmittedForm ? (
     <Stack>
-      <>
-        <ReviewRating rating={rating} setReviewsInput={setRating} />
+      <Stack direction="column" spacing="4">
+        <ReviewRating rating={rating} setReviewsInput={setRating} edit />
         <Textarea
           placeholder="Write your review here"
           size="lg"
           value={comment}
           onChange={handleChange}
         />
-      </>
+      </Stack>
       ) :
       <Flex justify="right">
         <Button isDisabled={!rating || !comment} onClick={submitReview}>

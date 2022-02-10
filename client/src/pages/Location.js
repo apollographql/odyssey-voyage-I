@@ -1,11 +1,11 @@
-import Layout from '../layout/Layout';
 import ReviewRating from '../components/ReviewRating';
 
+import Spinner from '../components/Spinner';
 import SubmitReview from '../components/SubmitReview';
+import {Error} from './Error';
 import {
-  Box,
-  Center,
   Flex,
+  HStack,
   Heading,
   Image,
   Stack,
@@ -38,46 +38,48 @@ export default function Location() {
   const {loading, error, data} = useQuery(GET_LOCATION_DETAILS, {
     variables: {locationId: id}
   });
-  if (loading) return 'Loading...';
-  if (error) return `uhoh error! ${error.message}`;
-  const {name, description, photo, reviews} = data?.location;
+  if (loading) return <Spinner />;
+  if (error) return <Error error={error.message} />;
+  const {name, description, photo, reviews, overallRating} = data?.location;
   return (
-    <Layout>
+    <>
       {data && (
-        <Stack direction="column" spacing="6" mb="12">
-          <Center height="100">
-            <Heading as="h1" size="lg">
-              {name}
-            </Heading>
-          </Center>
-          <Stack direction={['column', 'column', 'row']} spacing="6">
+        <Stack direction="column" px="12" spacing="6" mb="12">
+          <Heading as="h1" size="lg">
+            {name}
+          </Heading>
+          <HStack>
+            <ReviewRating isHalf size={16} rating={overallRating || 0} />{' '}
+            <div>({reviews.length})</div>
+          </HStack>
+          <Stack direction="column" spacing="6">
             <Image
               src={photo}
               alt={name}
               objectFit="cover"
               width="100%"
-              height="200px"
-              maxH="200px"
+              height="500px"
+              borderRadius="12"
             />
-            <Flex direction="row" justify="space-between">
-              <Text fontSize="lg" fontWeight="regular" mr="1">
+            <Flex direction="column" justify="space-between">
+              <Heading as="h2" py="4" size="md" mb="2">
+                About this location
+              </Heading>
+              <Text fontWeight="regular" mr="1">
                 {description}
               </Text>
             </Flex>
           </Stack>
           <Flex direction="row">
             <Stack flex="1" direction="column" spacing="12">
-              <Box>
-                <Heading as="h2" size="md" mb="2">
-                  Reviews
-                </Heading>
-                <SubmitReview locationId={id} />
-              </Box>
               <Stack
                 direction="column"
                 spacing="4"
                 divider={<StackDivider borderColor="gray.200" />}
               >
+                <Heading as="h2" size="md" mb="2" marginTop={8}>
+                  What other space travelers have to say
+                </Heading>
                 {reviews.length === 0 ? (
                   <Text>No reviews yet</Text>
                 ) : (
@@ -86,17 +88,19 @@ export default function Location() {
                       direction="column"
                       spacing="1"
                       key={`${i}-${rating}`}
+                      py="8"
                     >
                       <ReviewRating size={16} rating={rating} />
-                      <Text>{comment}</Text>
+                      <Text py="2">{comment}</Text>
                     </Stack>
                   ))
                 )}
               </Stack>
+              <SubmitReview locationId={id} />
             </Stack>
           </Flex>
         </Stack>
       )}
-    </Layout>
+    </>
   );
 }

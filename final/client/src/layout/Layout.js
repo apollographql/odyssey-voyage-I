@@ -10,7 +10,9 @@ export default function Layout({
   return (
     <>
       {!noNav && <Nav />}
-      <Container maxW={containerSize}>{children}</Container>
+      <Container py="4" maxW={containerSize}>
+        {children}
+      </Container>
     </>
   );
 }
