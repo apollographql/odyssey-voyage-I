@@ -6,7 +6,7 @@ const resolvers = {
   },
   Review: {
     location({locationId}) {
-      return {__typename: 'Location', id: locationId};
+      return {id: locationId};
     }
   },
   Location: {
@@ -24,4 +24,5 @@ const resolvers = {
     }
   }
 };
+
 module.exports = resolvers;
