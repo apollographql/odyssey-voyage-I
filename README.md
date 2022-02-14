@@ -1,22 +1,39 @@
-# Location-reviews (actual name TBD)
+# Voyage I: Federation from Day One
 
-This is the final stage for the demo app for course 2 of the next Odyssey series! This project will introduce learners to core federation concepts. They will be building this app from scratch!
+Welcome to FlyBy, the companion app of Odyssey Voyage I! You can find the [course lessons and instructions in Odyssey](https://odyssey.apollographql.com/federation-part1/), Apollo's learning platform.
 
-## How to start the app
+You can [preview the completed demo app here](https://odyssey-flyby.netlify.app/).
 
-To run the server:
+## How to use this repo
 
-1. Navigate to `server`.
-1. Run `npm install && npm start`. This will install all packages in the main server and the subgraphs, then start the main server.
-1. In a separate terminal, navigate to `server` again.
-1. Run `npm run start:subgraphs`. This will start up the 2 subgraphs (locations & reviews).
+The course will walk you step by step through how to implement the features you see in the demo app. This codebase is the starting point of your journey!
 
-Try out queries! Queries are available in the [Workbench](https://apollographql.github.io/apollo-workbench-vscode/) file, or can be found further below.
+You will work in three main folders:
+
+- `gateway`
+- `subgraph-locations`
+- `subgraph-reviews`
+
+The course will help you set up and run each of these servers.
+
+The repo also includes a `client` folder, which includes the frontend for the FlyBy app. You won't need to edit the code in this directory.
 
 To run the client:
 
-1. Navigate to `client`.
-1. Run `npm install && npm start`. This will install all packages in the client and start the application in `localhost:3000`.
+1. Open a new terminal window, and navigate to the `client` folder.
+1. Run `npm install & npm start`. This will install all packages in the client and start the application in `localhost:3000`.
+
+The repo also includes a `final` folder, to show what your code should look like once you've finished the course. You can use it to check your work if you get stuck.
+
+To run the servers in the `final` folder:
+
+1. Open a new terminal window, and navigate to `final/gateway`.
+1. Run `npm install && npm start`. This will install all packages in the main server, then start the main server at `http://localhost:4000`.
+1. Open another new terminal window, and navigate to `final/subgraph-locations`.
+1. Run `npm install && npm start` again. This will install all packages for the `locations` subgraph, then start the subgraph at `http://localhost:4001`.
+1. Open a third new terminal window, and navigate to `final/subgraph-reviews`.
+1. Run `npm install && npm start` again. This will install all packages for the `reviews` subgraph, then start the subgraph at `http://localhost:4002`.
+1. In a web browser, open Apollo Studio Sandbox for `http://localhost:4000`. You should be able to run queries against your gateway server. Some test queries are included in the following section.
 
 ### Queries
 
@@ -34,11 +51,26 @@ To run the client:
    }
    ```
 
+1. Get the latest reviews for the homepage.
+
+    ```graphql
+    query LatestReviews {
+      latestReviews {
+        comment
+        rating
+        location {
+          name
+          description
+        }
+      }
+    }
+    ```
+
 1. Get details for a specific location.
 
    ```graphql
    query getLocationDetails {
-     location(id: "location-1") {
+     location(id: "loc-1") {
        id
        name
        description
@@ -55,7 +87,7 @@ To run the client:
 1. Submit a review for a location.
    ```graphql
    mutation submitReview {
-     submitReview(review: { comment: "asdada", rating: 5, locationId: "1" }) {
+     submitReview(review: { comment: "Wow, such a great planet!", rating: 5, locationId: "1" }) {
        code
        success
        message
@@ -68,17 +100,6 @@ To run the client:
    }
    ```
 
-## Learner's Perspective
+## Getting Help
 
-The `client` app will be provided for them. We'll focus on building out the server-side.
-
-Concepts to cover in no particular order:
-
-- Entities
-- Subgraph A + Subgraph B = Supergraph
-- Setting up the gateway server
-- Using `rover` to compose the supergraph
-
-## Questions
-
-- How/should we use Workbench to plan our federated graph? (I used it right at the start)
+For any issues or problems concerning the course content, please refer to the [Odyssey topic in our community forums](https://community.apollographql.com/tags/c/help/6/odyssey).
