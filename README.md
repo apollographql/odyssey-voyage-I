@@ -8,6 +8,8 @@ You can [preview the completed demo app here](https://odyssey-flyby.netlify.app/
 
 The course will walk you step by step through how to implement the features you see in the demo app. This codebase is the starting point of your journey!
 
+### Backend
+
 You will work in three main folders:
 
 - `gateway`
@@ -16,12 +18,16 @@ You will work in three main folders:
 
 The course will help you set up and run each of these servers.
 
+### Frontend
+
 The repo also includes a `client` folder, which includes the frontend for the FlyBy app. You won't need to edit the code in this directory.
 
 To run the client:
 
 1. Open a new terminal window, and navigate to the `client` folder.
 1. Run `npm install & npm start`. This will install all packages in the client and start the application in `localhost:3000`.
+
+### `final` folder
 
 The repo also includes a `final` folder, to show what your code should look like once you've finished the course. You can use it to check your work if you get stuck.
 
