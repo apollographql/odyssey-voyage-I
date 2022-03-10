@@ -1,0 +1,33 @@
+# This job deploys the code to the production Heroku app environment
+name: Production Deploy
+
+# This job is triggered manually in the GitHub UI
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy locations subgraph
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: flyby-lab-locations-sg
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          appdir: "subgraph-locations"
+      - name: Deploy reviews subgraph
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: flyby-lab-reviews-sg
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          appdir: "subgraph-reviews"
+      # - name: Deploy activities subgraph
+      #   uses: akhileshns/heroku-deploy@v3.12.12
+      #   with:
+      #     heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+      #     heroku_app_name: flyby-lab-activities-sg
+      #     heroku_email: ${{ secrets.HEROKU_EMAIL }}
+      #     appdir: "subgraph-activities"

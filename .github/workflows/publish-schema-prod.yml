@@ -1,0 +1,37 @@
+# This job publishes the schema to the registry's `current` variant
+name: Production Publish Schema
+
+# this job runs after the Production Deploy is completed
+on:
+  workflow_run:
+    workflows: ['Production Deploy']
+    types:
+      - completed
+
+jobs:
+  publish_schema:
+    name: Publish schema to current variant
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment: apollo
+    env:
+      APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+      APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
+      GRAPH_REF: flyby-lab
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/v0.1.0 | sh
+          # Add Rover to the $GITHUB_PATH so it can be used in another step
+          # https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#adding-a-system-path
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - name: Publish locations subgraph to production registry
+        run: |
+          rover subgraph publish $GRAPH_REF@current --schema ./subgraph-locations/locations.graphql --name locations
+      # - name: Publish activities subgraph to production registry
+      #   run: |
+      #     rover subgraph publish $GRAPH_REF@current --schema ./subgraph-activities/activities.graphql --name activities
+      - name: Publish reviews subgraph to production registry
+        run: |
+          rover subgraph publish $GRAPH_REF@current --schema ./subgraph-reviews/reviews.graphql --name reviews
