@@ -1,7 +1,7 @@
 import ReviewRating from '../components/ReviewRating';
 import Spinner from '../components/Spinner';
 // import StatsBar from '../components/StatsBar';
-import SubmitReview from '../components/SubmitReview';
+import SubmitReview from '../components/SubmitLocationReview';
 import {
   Box,
   Flex,

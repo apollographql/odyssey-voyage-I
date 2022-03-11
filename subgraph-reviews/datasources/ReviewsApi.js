@@ -36,7 +36,9 @@ class ReviewsAPI {
   }
 
   submitReviewForLocation(review) {
-    const newReview = {id: `rev-${reviews.length + 1}`, ...review};
+    const { attractionType, comment, rating, id } = review
+    const attractionKey = attractionType === 'location' ? 'locationId' : 'activityId'
+    const newReview = {id: `rev-${reviews.length + 1}`, [attractionKey]: id, comment, rating };
     reviews = [...reviews, newReview];
     return newReview;
   }

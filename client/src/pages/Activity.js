@@ -1,8 +1,8 @@
 import ReviewRating from '../components/ReviewRating';
 import Spinner from '../components/Spinner';
-import {Fragment} from 'react';
-// import SubmitReview from '../components/SubmitReview';
+import SubmitReview from '../components/SubmitActivityReview';
 // import StatsBar from '../components/StatsBar';
+import BackLink from '../components/BackLink';
 import {
   Box,
   Flex,
@@ -81,6 +81,10 @@ export default function Activity() {
     <>
       {data && (
         <Stack direction="column" px="12" spacing="6" mb="12">
+          <BackLink
+            link={`/location/${locationId}`}
+            label={`Back to ${locationName}`}
+          />
           <Stack
             direction="row"
             alignContent="center"
@@ -143,16 +147,10 @@ export default function Activity() {
                       </Box>
                     </Stack>
                   ))}
-                  <Text
-                    fontWeight="bold"
-                    color="brand.300"
-                    _hover={{color: 'brand.400'}}
-                    _focus={{color: 'brand.400'}}
-                    as={Link}
-                    to={`/location/${locationId}`}
-                  >
-                    ← Back to {locationName}
-                  </Text>
+                  <BackLink
+                    link={`/location/${locationId}`}
+                    label={`Back to ${locationName}`}
+                  />
                 </Stack>
               )}
             </Wrap>
@@ -183,7 +181,7 @@ export default function Activity() {
                   ))
                 )}
               </Stack>
-              {/* <SubmitReview reviewableId={id} /> */}
+              <SubmitReview activityId={id} />
             </Stack>
           </Flex>
         </Stack>
