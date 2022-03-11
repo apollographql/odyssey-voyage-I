@@ -5,7 +5,25 @@ type Query {
   location(id: ID!): Location
 }
 
-type Location @key(fields: "id"){
+enum LocationTerrain {
+  TERRESTRIAL
+  AERIAL
+  AQUATIC
+  GALACTIC
+  MAGMATIC
+}
+
+interface Attraction {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+}
+
+type Location implements Attraction @key(fields: "id"){
   id: ID!
   "The name of the location"
   name: String!
@@ -13,4 +31,6 @@ type Location @key(fields: "id"){
   description: String!
   "The location's main photo as a URL"
   photo: String!
+  "The location's terrain"
+  terrain: LocationTerrain
 }
