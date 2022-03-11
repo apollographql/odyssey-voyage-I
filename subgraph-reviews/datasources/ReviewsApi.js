@@ -13,6 +13,19 @@ class ReviewsAPI {
     return reviews.slice(Math.max(reviews.length - 3, 0));
   }
 
+  getReviewsForActivity(id) {
+    return reviews.filter(r => r.activityId === id);
+  }
+
+  getOverallRatingForActivity(id) {
+    const allRatings = reviews
+      .filter(r => r.activityId === id)
+      .map(r => r.rating);
+    const sum = allRatings.reduce((a, b) => a + b, 0);
+    const average = sum / allRatings.length || 0;
+    return average;
+  }
+
   getOverallRatingForLocation(id) {
     const allRatings = reviews
       .filter(r => r.locationId === id)
