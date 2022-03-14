@@ -37,7 +37,7 @@ type Activity implements Attraction @key(fields: "id") {
   "The attraction's main photo as a URL"
   photo: String!
   "The activity's terrain"
-  terrain: ActivityTerrain
+  terrain: ActivityTerrain!
   "The activity's location"
   location: Location
 }

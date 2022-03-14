@@ -1,19 +1,21 @@
 import ReviewRating from '../components/ReviewRating';
-
 import Spinner from '../components/Spinner';
-import SubmitReview from '../components/SubmitReview';
-import {Error} from './Error';
+import StatsBar from '../components/StatsBar';
+import SubmitReview from '../components/SubmitLocationReview';
 import {
+  Box,
   Flex,
   HStack,
   Heading,
   Image,
   Stack,
   StackDivider,
-  Text
+  Text,
+  Wrap
 } from '@chakra-ui/react';
+import {Error} from './Error';
+import {Link, useParams} from 'react-router-dom';
 import {gql, useQuery} from '@apollo/client';
-import {useParams} from 'react-router-dom';
 
 export const GET_LOCATION_DETAILS = gql`
   query getLocationDetails($locationId: ID!) {
@@ -23,10 +25,23 @@ export const GET_LOCATION_DETAILS = gql`
       description
       photo
       overallRating
+      terrain
+      stats {
+        gravity
+        averageTemperature
+        lengthOfDay
+        minimumAge
+      }
       reviews {
         id
         comment
         rating
+      }
+      activities {
+        id
+        name
+        photo
+        terrain
       }
     }
   }
@@ -40,7 +55,17 @@ export default function Location() {
   });
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
-  const {name, description, photo, reviews, overallRating} = data?.location;
+  const {
+    name,
+    description,
+    photo,
+    reviews,
+    stats,
+    terrain,
+    overallRating,
+    activities
+  } = data?.location;
+
   return (
     <>
       {data && (
@@ -69,6 +94,40 @@ export default function Location() {
                 {description}
               </Text>
             </Flex>
+          </Stack>
+          <Stack>
+            <StatsBar type="Location" stats={stats} terrain={terrain} />
+            {!!activities.length && (
+              <>
+                <Heading as="h2" size="md" mb="2" marginTop={8}>
+                  Things to do
+                </Heading>
+                <Wrap spacing="12">
+                  {activities.map(({id, name, photo, terrain}, i) => (
+                    <Stack key={i} as={Link} to={`/activity/${id}`}>
+                      <Image
+                        src={photo}
+                        alt={name}
+                        maxWidth="400px"
+                        borderRadius="12"
+                      />
+                      <Box>
+                        <Text
+                          fontFamily="emphasis"
+                          fontWeight="bold"
+                          color="brand.gray"
+                        >
+                          {terrain} ACTIVITY
+                        </Text>
+                        <Text fontWeight="bold" fontSize={20}>
+                          {name}
+                        </Text>
+                      </Box>
+                    </Stack>
+                  ))}
+                </Wrap>
+              </>
+            )}
           </Stack>
           <Flex direction="row">
             <Stack flex="1" direction="column" spacing="12">

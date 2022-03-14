@@ -3,11 +3,14 @@ import ReviewRating from './ReviewRating';
 import {Box, Heading, Stack, Text} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
 
-export default function ReviewCard({rating, comment, location}) {
+export default function ReviewCard({rating, comment, attraction}) {
   const highlightStyles = {
     opacity: '80%',
     cursor: 'pointer'
   };
+
+  const attractionType =
+    attraction.__typename === 'Location' ? 'location' : 'activity';
 
   return (
     <Box
@@ -20,12 +23,12 @@ export default function ReviewCard({rating, comment, location}) {
       _hover={highlightStyles}
       _focus={highlightStyles}
       as={Link}
-      to={`/location/${location.id}`}
+      to={`/${attractionType}/${attraction.id}`}
     >
       <Stack spacing="32px" my="2" direction="column" justify="space-between">
         <ReviewRating isLight size={20} rating={rating} />
         <Heading as="h3" size="md">
-          {location.name}
+          {attraction.name}
         </Heading>
       </Stack>
       <Text noOfLines={3}>{comment}</Text>
@@ -34,8 +37,7 @@ export default function ReviewCard({rating, comment, location}) {
 }
 
 ReviewCard.propTypes = {
-  id: PropTypes.string,
   comment: PropTypes.string,
   rating: PropTypes.number,
-  location: PropTypes.object
+  attraction: PropTypes.object
 };

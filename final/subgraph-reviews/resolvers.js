@@ -17,6 +17,24 @@ const resolvers = {
       return dataSources.reviewsAPI.getReviewsForLocation(id);
     }
   },
+  Activity: {
+    overallRating({id}, _, {dataSources}) {
+      return dataSources.reviewsAPI.getOverallRatingForActivity(id);
+    },
+    reviews({id}, _, {dataSources}) {
+      return dataSources.reviewsAPI.getReviewsForActivity(id);
+    }
+  },
+  Review: {
+    attraction(review) {
+      if (review.locationId) {
+        return { __typename: 'Location', id: review.locationId }
+      } else if (review.activityId) {
+        return { __typename: 'Activity', id: review.activityId }
+      }
+      return null
+    }
+  },
   Mutation: {
     submitReview(_, {review}, {dataSources}) {
       const newReview = dataSources.reviewsAPI.submitReviewForLocation(review);

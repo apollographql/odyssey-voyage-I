@@ -1,8 +1,7 @@
-import LocationCard from '../components/LocationCard';
+import AttractionCard from '../components/AttractionCard';
 import ReviewCard from '../components/ReviewCard';
-import {Error} from './Error';
-
 import Spinner from '../components/Spinner';
+import {Error} from './Error';
 import {
   Heading,
   SimpleGrid,
@@ -19,8 +18,26 @@ export const GET_LATEST_REVIEWS_AND_LOCATIONS = gql`
       id
       name
       description
-      overallRating
       photo
+      terrain
+      overallRating
+      reviews {
+        id
+        comment
+        rating
+      }
+    }
+    activities {
+      id
+      name
+      description
+      photo
+      terrain
+      location {
+        id
+        name
+      }
+      overallRating
       reviews {
         id
         comment
@@ -31,9 +48,15 @@ export const GET_LATEST_REVIEWS_AND_LOCATIONS = gql`
       id
       comment
       rating
-      location {
-        id
-        name
+      attraction {
+        ... on Location {
+          id
+          name
+        }
+        ... on Activity {
+          id
+          name
+        }
       }
     }
   }
@@ -71,14 +94,28 @@ export default function HomePage() {
       </Stack>
       <Stack direction="column" spacing="4">
         <Heading as="h2" size="lg">
-          Locations
+          Things to do
+        </Heading>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <SimpleGrid columns={[1, null, 2]} spacing={4}>
+            {data?.activities.map(activity => (
+              <AttractionCard key={activity.id} {...activity} />
+            ))}
+          </SimpleGrid>
+        )}
+      </Stack>
+      <Stack direction="column" spacing="4">
+        <Heading as="h2" size="lg">
+          Places to go
         </Heading>
         {loading ? (
           <Spinner />
         ) : (
           <SimpleGrid columns={[1, null, 2]} spacing={4}>
             {data?.locations.map(location => (
-              <LocationCard key={location.id} {...location} />
+              <AttractionCard key={location.id} {...location} />
             ))}
           </SimpleGrid>
         )}

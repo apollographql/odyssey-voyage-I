@@ -1,4 +1,4 @@
-type Query{
+type Query {
   latestReviews: [Review!]!
 }
 
@@ -6,13 +6,23 @@ type Mutation {
   submitReview(review: ReviewInput): SubmitReviewResponse
 }
 
-extend type Location @key(fields: "id") {
-  id: ID! @external
+type Location @key(fields: "id") {
+  id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
   "All submitted reviews about this location"
   reviews: [Review]!
 }
+
+type Activity @key(fields: "id") {
+  id: ID!
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this activity"
+  reviews: [Review]!
+}
+
+union Reviewable = Location | Activity
 
 type Review {
   id: ID!
@@ -20,8 +30,8 @@ type Review {
   comment: String
   "A number from 1 - 5 with 1 being lowest and 5 being highest"
   rating: Int
-  "The location the review is about"
-  location: Location
+  "The attraction the review is about"
+  attraction: Reviewable
 }
 
 input ReviewInput {
@@ -29,8 +39,10 @@ input ReviewInput {
   comment: String!
   "A number from 1 - 5 with 1 being lowest and 5 being highest"
   rating: Int!
-  "Location Id"
-  locationId: String!
+  "Attraction id"
+  id: String!
+  "Attraction type"
+  attractionType: String!
 }
 
 type SubmitReviewResponse {

@@ -1,0 +1,73 @@
+type Query {
+  "The full list of activities offered on Interplanetary Space Tourism departments locations"
+  activities: [Activity]
+  "The details of a specific activity"
+  activity(id: ID!): Activity
+}
+
+interface Stats {
+  "The average temperature"
+  averageTemperature: Int!
+  "The gravity"
+  gravity: Float
+  "The minimum age for participation on this attraction"
+  minimumAge: Int!
+}
+
+type ActivityStats implements Stats @key(fields: "id locationId"){
+  id: ID!
+  "The activity's location ID"
+  locationId: ID!
+  "The average temperature"
+  averageTemperature: Int!
+  "The gravity"
+  gravity: Float
+  "The minimum age for participation on this attraction"
+  minimumAge: Int!
+  "Whether or not an exosuit is required"
+  exosuitRequired: Boolean!
+  "How large of a group this activity can accommodate"
+  groupSize: Int!
+}
+
+
+enum Terrain {
+  TERRESTRIAL
+  AERIAL
+  AQUATIC
+  GALACTIC
+}
+
+interface Attraction {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+  "The terrain for an attraction"
+  terrain: Terrain!
+}
+
+type Location @key(fields: "id") {
+  id: ID!
+  "The activities associated with a location"
+  activities: [Activity]
+}
+
+type Activity implements Attraction @key(fields: "id") {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+  "The terrain for an attraction"
+  terrain: Terrain!
+  "The activity's location"
+  location: Location
+  "The activity's stats"
+  stats: ActivityStats!
+}
