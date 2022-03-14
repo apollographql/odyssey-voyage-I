@@ -1,0 +1,123 @@
+{
+  "activities": [
+    { 
+      "id": "act-1",
+      "name": "Candycloud Paragliding",
+      "description": "A thing to do in the skies of 'Vinci'",
+      "locationId": "loc-2",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646347435/odyssey/federation-course1/FlyBy%20illustrations/candycloudparagliding_mfemda.png",
+      "terrain": "AERIAL",
+      "minimumAge": 18,
+      "averageTemperature": 90,
+      "groupSize": 2
+    },
+    { 
+      "id": "act-2",
+      "name": "Cosmic Jacuzzi",
+      "description": "The most popular activity on 'Vinci'",
+      "locationId": "loc-2",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646347750/odyssey/federation-course1/FlyBy%20illustrations/cosmic-jacuzzi_v0be1n.png",
+      "terrain": "AQUATIC",
+      "minimumAge": 21,
+      "averageTemperature": 90,
+      "gravity": 2.1,
+      "groupSize": 10
+    },
+    { 
+      "id": "act-3",
+      "name": "Acid Lake Diving",
+      "description": "There's not much to see on Krypton, but one thing you can do is take a tingly plunge into any one of the acid crater lakes sprinkled about the planet! It'll singe away any boredom you're feeling!",
+      "locationId": "loc-4",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646347751/odyssey/federation-course1/FlyBy%20illustrations/acid-lake-diving_oibyo2.png",
+      "terrain": "AQUATIC",
+      "minimumAge": 21,
+      "gravity": 10.4,
+      "averageTemperature": 4,
+      "groupSize": 5
+    },
+    { 
+      "id": "act-4",
+      "name": "Cave Spelunking",
+      "description": "Come explore the unknown, shadowy depths in the caves of Zenn-la! On this uncharted planet, you never know what you might discover next... Or what might discover YOU.",
+      "locationId": "loc-5",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646422132/odyssey/federation-course1/FlyBy%20illustrations/cave-spelunking_n5sbyt.png",
+      "terrain": "TERRESTRIAL",
+      "minimumAge": 6,
+      "averageTemperature": 15,
+      "gravity": 9,
+      "groupSize": 20
+    },
+    {
+      "id": "act-5",
+      "name": "Jetpack Space Voyage",
+      "description": "We'll go off the grid for this one - leave behind the Asteroid on your own jetpack. Chart your independent mission through the stars, but don't forget to keep an eye on that oxygen gauge!",
+      "locationId": "loc-3",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646422134/odyssey/federation-course1/FlyBy%20illustrations/jetpack-exploration_qsoxmf.png",
+      "terrain": "GALACTIC",
+      "minimumAge": 16,
+      "averageTemperature": -4324,
+      "gravity": 8.2,
+      "groupSize": 4
+    },
+    {
+      "id": "act-6",
+      "name": "Intergalactic Lookout",
+      "description": "some stuffs about lookout",
+      "locationId": "loc-5",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646690337/odyssey/federation-course1/FlyBy%20illustrations/intergalactic-lookout_tsmiw2.png",
+      "terrain": "GALACTIC",
+      "minimumAge": 4,
+      "averageTemperature": 35,
+      "gravity": 9.1,
+      "groupSize": 2
+    },
+    {
+      "id": "act-7",
+      "name": "Starry Ocean Expedition",
+      "description": "some stuffs about expedition",
+      "locationId": "loc-1",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646777282/odyssey/federation-course1/FlyBy%20illustrations/starry-ocean-expedition_gnsczg.png",
+      "terrain": "AQUATIC",
+      "minimumAge": 13,
+      "averageTemperature": -200,
+      "gravity": 2.3,
+      "groupSize": 8
+    },
+    {
+      "id": "act-8",
+      "name": "Hike to the top of Tentacle Mountain",
+      "description": "some stuffs about hike",
+      "locationId": "loc-1",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646690455/odyssey/federation-course1/FlyBy%20illustrations/hike-tentacle-mountain_udxwkp.png",
+      "terrain": "TERRESTRIAL",
+      "minimumAge": 9,
+      "averageTemperature": 13,
+      "gravity": 6.4,
+      "groupSize": 30
+    },
+    {
+      "id": "act-9",
+      "name": "Picnic at World's End",
+      "description": "some stuffs about picnic",
+      "locationId": "loc-4",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646690517/odyssey/federation-course1/FlyBy%20illustrations/picnic-edge-krypton_ilgfmg.png",
+      "terrain": "TERRESTRIAL",
+      "minimumAge": 3,
+      "averageTemperature": 4,
+      "gravity": 10.4,
+      "groupSize": 8
+    },
+    {
+      "id": "act-10",
+      "name": "Zero-G Skiing",
+      "description": "some stuffs about skiing",
+      "locationId": "loc-3",
+      "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646777286/odyssey/federation-course1/FlyBy%20illustrations/zero-g-skiing_qqfqie.png",
+      "terrain": "GALACTIC",
+      "minimumAge": 11,
+      "averageTemperature": -234,
+      "gravity": 0,
+      "groupSize": 25
+    }
+  ]
+}
