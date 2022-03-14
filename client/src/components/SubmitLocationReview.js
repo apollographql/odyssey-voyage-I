@@ -1,9 +1,8 @@
-import Button from './Button.js';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-import ReviewRating from './ReviewRating';
-import {Flex, Stack, Text, Textarea} from '@chakra-ui/react';
+import ReviewBox from './ReviewBox';
 import {GET_LOCATION_DETAILS} from '../pages/Location';
+import {Text} from '@chakra-ui/react';
 import {gql, useMutation} from '@apollo/client';
 
 export const SUBMIT_REVIEW = gql`
@@ -29,7 +28,12 @@ export default function SubmitReview({locationId}) {
 
   const [submitReview] = useMutation(SUBMIT_REVIEW, {
     variables: {
-      review: {comment, rating: parseInt(rating, 10), locationId}
+      review: {
+        comment,
+        rating: parseInt(rating, 10),
+        id: locationId,
+        attractionType: 'location'
+      }
     },
     refetchQueries: [
       {query: GET_LOCATION_DETAILS, variables: {locationId}}, // DocumentNode object parsed with gql
@@ -39,23 +43,13 @@ export default function SubmitReview({locationId}) {
   });
 
   return !hasSubmittedForm ? (
-    <Stack>
-      <Stack direction="column" spacing="4">
-        <ReviewRating rating={rating} setReviewsInput={setRating} edit />
-        <Textarea
-          placeholder="Write your review here"
-          size="lg"
-          value={comment}
-          onChange={handleChange}
-        />
-      </Stack>
-      ) :
-      <Flex justify="right">
-        <Button isDisabled={!rating || !comment} onClick={submitReview}>
-          Submit Review
-        </Button>
-      </Flex>
-    </Stack>
+    <ReviewBox
+      rating={rating}
+      setRating={setRating}
+      handleChange={handleChange}
+      comment={comment}
+      submitReview={submitReview}
+    />
   ) : (
     <Text as="i">Thanks for writing a review!</Text>
   );

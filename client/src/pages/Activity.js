@@ -1,7 +1,8 @@
 import ReviewRating from '../components/ReviewRating';
 import Spinner from '../components/Spinner';
+import SubmitReview from '../components/SubmitActivityReview';
 // import StatsBar from '../components/StatsBar';
-import SubmitReview from '../components/SubmitLocationReview';
+import BackLink from '../components/BackLink';
 import {
   Box,
   Flex,
@@ -17,40 +18,48 @@ import {Error} from './Error';
 import {Link, useParams} from 'react-router-dom';
 import {gql, useQuery} from '@apollo/client';
 
-export const GET_LOCATION_DETAILS = gql`
-  query getLocationDetails($locationId: ID!) {
-    location(id: $locationId) {
+export const GET_ACTIVITY_DETAILS = gql`
+  query getActivityDetails($activityId: ID!) {
+    activity(id: $activityId) {
       id
       name
       description
       photo
       overallRating
+      terrain
       # stats {
-      #   gravity
       #   averageTemperature
+      #   gravity
       #   lengthOfDay
+      #   exosuitRequired
       #   minimumAge
+      #   groupSize
       # }
+      location {
+        id
+        name
+        photo
+        activities {
+          id
+          name
+          photo
+          terrain
+        }
+      }
       reviews {
         id
         comment
         rating
       }
-      activities {
-        id
-        name
-        photo
-        terrain
-      }
     }
   }
 `;
 
-export default function Location() {
+export default function Activity() {
   const {id} = useParams();
 
-  const {loading, error, data} = useQuery(GET_LOCATION_DETAILS, {
-    variables: {locationId: id}
+  const {loading, error, data} = useQuery(GET_ACTIVITY_DETAILS, {
+    variables: {activityId: id}
   });
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
@@ -59,17 +68,33 @@ export default function Location() {
     description,
     photo,
     reviews,
-    /* stats, */ overallRating,
-    activities
-  } = data?.location;
+    overallRating,
+    location
+    // terrain
+    // stats,
+  } = data?.activity;
+  const {id: locationId, name: locationName, activities} = location;
+
+  const otherActivities = activities.filter(a => a.id !== id);
 
   return (
     <>
       {data && (
         <Stack direction="column" px="12" spacing="6" mb="12">
-          <Heading as="h1" size="lg">
-            {name}
-          </Heading>
+          <BackLink
+            link={`/location/${locationId}`}
+            label={`Back to ${locationName}`}
+          />
+          <Stack
+            direction="row"
+            alignContent="center"
+            alignItems="flex-end"
+            spacing="4"
+          >
+            <Heading as="h1" size="lg">
+              {name} on {locationName}
+            </Heading>
+          </Stack>
           <HStack>
             <ReviewRating isHalf size={16} rating={overallRating || 0} />{' '}
             <div>({reviews.length})</div>
@@ -85,7 +110,7 @@ export default function Location() {
             />
             <Flex direction="column" justify="space-between">
               <Heading as="h2" py="4" size="md" mb="2">
-                About this location
+                About this activity
               </Heading>
               <Text fontWeight="regular" mr="1">
                 {description}
@@ -93,15 +118,15 @@ export default function Location() {
             </Flex>
           </Stack>
           <Stack>
-            {/* <StatsBar type="Location" stats={stats} /> */}
-            {!!activities.length && (
-              <>
-                <Heading as="h2" size="md" mb="2" marginTop={8}>
-                  Things to do
-                </Heading>
-                <Wrap spacing="12">
-                  {activities.map(({id, name, photo, terrain}, i) => (
-                    <Stack key={i} as={Link} to={`/activity/${id}`}>
+            {/* <StatsBar type="Activity" stats={stats} terrain={terrain} /> */}
+            <Heading as="h2" size="md" mb="2" marginTop={8}>
+              Explore more to do on {locationName}
+            </Heading>
+            <Wrap spacing="12" alignItems="flex-end">
+              {!!otherActivities.length && (
+                <Stack>
+                  {otherActivities.map(({id, name, photo, terrain}, i) => (
+                    <Stack key={i} as={Link} to={`${id}`}>
                       <Image
                         src={photo}
                         alt={name}
@@ -122,9 +147,13 @@ export default function Location() {
                       </Box>
                     </Stack>
                   ))}
-                </Wrap>
-              </>
-            )}
+                  <BackLink
+                    link={`/location/${locationId}`}
+                    label={`Back to ${locationName}`}
+                  />
+                </Stack>
+              )}
+            </Wrap>
           </Stack>
           <Flex direction="row">
             <Stack flex="1" direction="column" spacing="12">
@@ -152,7 +181,7 @@ export default function Location() {
                   ))
                 )}
               </Stack>
-              <SubmitReview locationId={id} />
+              <SubmitReview activityId={id} />
             </Stack>
           </Flex>
         </Stack>

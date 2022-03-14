@@ -6,7 +6,9 @@ export default extendTheme({
     brand: {
       black: '#12151A',
       white: '#FCFDFF',
-      light: '#DEE2E7',
+      gray: '#5A6270',
+      light: '#959DAA',
+      lighter: '#DEE2E7',
       100: '#D9CFFF',
       200: '#AD9BF6',
       300: '#7156D9',
@@ -17,6 +19,7 @@ export default extendTheme({
   },
   fonts: {
     heading: "'Source Sans Pro', sans-serif",
-    body: "'Source Sans Pro', sans-serif"
+    body: "'Source Sans Pro', sans-serif",
+    emphasis: "'Source Code Pro', serif"
   }
 });

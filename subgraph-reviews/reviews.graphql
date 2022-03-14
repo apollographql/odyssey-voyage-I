@@ -1,0 +1,57 @@
+type Query {
+  latestReviews: [Review!]!
+}
+
+type Mutation {
+  submitReview(review: ReviewInput): SubmitReviewResponse
+}
+
+extend type Location @key(fields: "id") {
+  id: ID! @external
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this location"
+  reviews: [Review]!
+}
+
+extend type Activity @key(fields: "id") {
+  id: ID! @external
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this activity"
+  reviews: [Review]!
+}
+
+union Reviewable = Location | Activity
+
+type Review {
+  id: ID!
+  "Written text"
+  comment: String
+  "A number from 1 - 5 with 1 being lowest and 5 being highest"
+  rating: Int
+  "The attraction the review is about"
+  attraction: Reviewable
+}
+
+input ReviewInput {
+  "Written text"
+  comment: String!
+  "A number from 1 - 5 with 1 being lowest and 5 being highest"
+  rating: Int!
+  "Attraction id"
+  id: String!
+  "Attraction type"
+  attractionType: String!
+}
+
+type SubmitReviewResponse {
+  "Similar to HTTP status code, represents the status of the mutation"
+  code: Int!
+  "Indicates whether the mutation was successful"
+  success: Boolean!
+  "Human-readable message for the UI"
+  message: String!
+  "Newly created review"
+  review: Review
+}
