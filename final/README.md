@@ -1,18 +1,19 @@
-# Voyage I: Federation from Day One
+# Voyage I Lab: Updating to Federation v2
 
-Welcome to FlyBy, the companion app of Odyssey Voyage I! You can find the [course lessons and instructions in Odyssey](https://odyssey.apollographql.com/federation-part1/), Apollo's learning platform.
+Welcome to Voyage I Lab! In this hands-on project we'll take the companion app of Odyssey Voyage I, FlyBy, and update it to use Apollo Federation v2! You can find the [course lessons and instructions in Odyssey](https://odyssey.apollographql.com/voyage-i-lab), Apollo's learning platform.
 
-You can [preview the completed demo app here](https://odyssey-flyby.netlify.app/).
+TODO: You can [preview the completed demo app here](https://odyssey-flyby-lab.netlify.app/).
 
 ## How to use this repo
 
-The course will walk you step by step through how to implement the features you see in the demo app. This codebase is the starting point of your journey!
+The lab will walk you step by step through how to implement the features you see in the demo app. This codebase is the starting point of your journey!
 
 ### Backend
 
-You will work in three main folders:
+You will work in four main folders:
 
 - `gateway`
+- `subgraph-activities`
 - `subgraph-locations`
 - `subgraph-reviews`
 
@@ -20,7 +21,7 @@ The course will help you set up and run each of these servers.
 
 ### Frontend
 
-The repo also includes a `client` folder, which includes the frontend for the FlyBy app. You won't need to edit the code in this directory.
+The repo also includes a `client` folder, which includes the frontend for the FlyBy app. We'll make a few updates in this folder at the end of the course.
 
 To run the client:
 
