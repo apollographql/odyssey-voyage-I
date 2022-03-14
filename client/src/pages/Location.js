@@ -25,7 +25,7 @@ export const GET_LOCATION_DETAILS = gql`
       description
       photo
       overallRating
-      # terrain
+      terrain
       # stats {
       #   gravity
       #   averageTemperature
@@ -60,8 +60,10 @@ export default function Location() {
     description,
     photo,
     reviews,
-    /* stats, terrain, */ overallRating,
+    overallRating,
     activities
+    // terrain,
+    // stats
   } = data?.location;
 
   return (

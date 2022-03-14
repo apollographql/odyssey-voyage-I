@@ -70,8 +70,8 @@ export default function Activity() {
     reviews,
     overallRating,
     location
-    // terrain
-    // stats,
+    // terrain,
+    // stats
   } = data?.activity;
   const {id: locationId, name: locationName, activities} = location;
 
