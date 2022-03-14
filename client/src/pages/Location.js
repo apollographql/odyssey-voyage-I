@@ -25,6 +25,7 @@ export const GET_LOCATION_DETAILS = gql`
       description
       photo
       overallRating
+      # terrain
       # stats {
       #   gravity
       #   averageTemperature
@@ -59,7 +60,7 @@ export default function Location() {
     description,
     photo,
     reviews,
-    /* stats, */ overallRating,
+    /* stats, terrain, */ overallRating,
     activities
   } = data?.location;
 
@@ -93,7 +94,7 @@ export default function Location() {
             </Flex>
           </Stack>
           <Stack>
-            {/* <StatsBar type="Location" stats={stats} /> */}
+            {/* <StatsBar type="Location" stats={stats} terrain={terrain} /> */}
             {!!activities.length && (
               <>
                 <Heading as="h2" size="md" mb="2" marginTop={8}>
