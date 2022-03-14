@@ -32,5 +32,5 @@ type Location implements Attraction @key(fields: "id"){
   "The location's main photo as a URL"
   photo: String!
   "The location's terrain"
-  terrain: LocationTerrain
+  terrain: LocationTerrain!
 }
