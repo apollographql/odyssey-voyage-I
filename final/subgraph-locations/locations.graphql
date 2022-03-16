@@ -6,24 +6,24 @@ type Query {
 }
 
 interface Stats {
-  "The average temperature"
+  "The average temperature, in Fahrenheit"
   averageTemperature: Int!
-  "The gravity"
+  "The strength of the gravity field, in g units"
   gravity: Float!
-  "The length of day"
+  "The length of day, in minutes"
   lengthOfDay: Int!
-  "The minimum age for participation on this attraction"
+  "The minimum age in years for participation on this attraction"
   minimumAge: Int
 }
 
 type LocationStats implements Stats {
- "The average temperature"
- averageTemperature: Int!
- "The gravity"
- gravity: Float!
- "The length of day"
- lengthOfDay: Int!
- "The minimum age for participation on this attraction"
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float!
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
   minimumAge: Int
 }
 
@@ -52,7 +52,7 @@ type ActivityStats @key(fields: "id locationId") {
   id: ID!
   "The activity's location ID"
   locationId: ID!
-  "The length of day"
+  "The length of day, in minutes"
   lengthOfDay: Int!
 }
 
