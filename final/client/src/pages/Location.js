@@ -56,12 +56,12 @@ export default function Location() {
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
   const {
+    terrain,
+    stats,
     name,
     description,
     photo,
     reviews,
-    stats,
-    terrain,
     overallRating,
     activities
   } = data?.location;
