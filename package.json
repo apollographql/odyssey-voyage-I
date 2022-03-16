@@ -1,0 +1,27 @@
+{
+  "name": "odyssey-voyage-i-lab",
+  "version": "1.0.0",
+  "description": "Welcome to Voyage I Lab! In this hands-on project we'll take the companion app of Odyssey Voyage I, FlyBy, and update it to use Apollo Federation v2! You can find the [course lessons and instructions in Odyssey](https://odyssey.apollographql.com/voyage-i-lab), Apollo's learning platform.",
+  "main": "index.js",
+  "scripts": {
+    "install:client": "cd client && npm install",
+    "install:locations": "cd subgraph-locations && npm install",
+    "install:activities": "cd subgraph-activities && npm install",
+    "install:reviews": "cd subgraph-reviews && npm install",
+    "install:gateway": "cd gateway && npm install",
+    "install-all": "npm install && concurrently 'npm:install:*'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apollographql-education/odyssey-voyage-I-lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apollographql-education/odyssey-voyage-I-lab/issues"
+  },
+  "homepage": "https://github.com/apollographql-education/odyssey-voyage-I-lab#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
