@@ -8,7 +8,7 @@ const resolvers = {
     }
   },
   Location: {
-    __resolveReference(location) {
+    __resolveReference: (location) => {
       return location
     },
     activities: ({id}, _, {dataSources}) => {
@@ -16,7 +16,7 @@ const resolvers = {
     }
   },
   Activity: {
-    __resolveReference({id}, { dataSources }) {
+    __resolveReference: ({id}, { dataSources }) => {
       return dataSources.activitiesAPI.getActivity(id)
     },
     location: ({ locationId }) => ({id: locationId})

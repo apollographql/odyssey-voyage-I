@@ -1,32 +1,32 @@
 const resolvers = {
   Query: {
-    latestReviews(_, __, {dataSources}) {
+    latestReviews: (_, __, {dataSources}) => {
       return dataSources.reviewsAPI.getLatestReviews();
     }
   },
   Review: {
-    location({locationId}) {
+    location: ({locationId}) => {
       return {id: locationId};
     }
   },
   Location: {
-    overallRating({id}, _, {dataSources}) {
+    overallRating: ({id}, _, {dataSources}) => {
       return dataSources.reviewsAPI.getOverallRatingForLocation(id);
     },
-    reviews({id}, _, {dataSources}) {
+    reviews: ({id}, _, {dataSources}) => {
       return dataSources.reviewsAPI.getReviewsForLocation(id);
     }
   },
   Activity: {
-    overallRating({id}, _, {dataSources}) {
+    overallRating: ({id}, _, {dataSources}) => {
       return dataSources.reviewsAPI.getOverallRatingForActivity(id);
     },
-    reviews({id}, _, {dataSources}) {
+    reviews: ({id}, _, {dataSources}) => {
       return dataSources.reviewsAPI.getReviewsForActivity(id);
     }
   },
   Review: {
-    attraction(review) {
+    attraction: (review) => {
       if (review.locationId) {
         return { __typename: 'Location', id: review.locationId }
       } else if (review.activityId) {
@@ -36,7 +36,7 @@ const resolvers = {
     }
   },
   Mutation: {
-    submitReview(_, {review}, {dataSources}) {
+    submitReview: (_, {review}, {dataSources}) => {
       const newReview = dataSources.reviewsAPI.submitReviewForLocation(review);
       return {code: 200, success: true, message: 'success', review: newReview};
     }
