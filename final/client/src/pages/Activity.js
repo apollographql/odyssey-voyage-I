@@ -64,14 +64,14 @@ export default function Activity() {
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
   const {
+    terrain,
+    stats,
     name,
     description,
     photo,
     reviews,
     overallRating,
     location,
-    terrain,
-    stats
   } = data?.activity;
   const {id: locationId, name: locationName, activities} = location;
 

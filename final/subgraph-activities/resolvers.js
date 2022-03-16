@@ -8,7 +8,7 @@ const resolvers = {
     }
   },
   Location: {
-    __resolveReference(location) {
+    __resolveReference: (location) => {
       return location
     },
     activities: ({id}, _, {dataSources}) => {
@@ -16,7 +16,7 @@ const resolvers = {
     }
   },
   Activity: {
-    __resolveReference({id}, { dataSources }) {
+    __resolveReference: ({id}, { dataSources }) => {
       return dataSources.activitiesAPI.getActivity(id)
     },
     location: ({ locationId }) => ({id: locationId}),
@@ -25,7 +25,7 @@ const resolvers = {
     }
   },
   ActivityStats: {
-    exosuitRequired({ averageTemperature, gravity }) {
+    exosuitRequired: ({ averageTemperature, gravity }) => {
       const hasExtremeTemp = averageTemperature < 0 || averageTemperature > 50
       const hasExtremeGravity = gravity < 4 || gravity > 9
       return hasExtremeTemp || hasExtremeGravity
