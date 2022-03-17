@@ -27,6 +27,12 @@ concurrently(
       cwd: path.resolve(__dirname, './gateway'),
       prefixColor: 'yellow',
     },
+    {
+      command: 'npm install',
+      name: 'client',
+      cwd: path.resolve(__dirname, './client'),
+      prefixColor: 'cyan',
+    },
   ],
   {
     prefix: 'name',
