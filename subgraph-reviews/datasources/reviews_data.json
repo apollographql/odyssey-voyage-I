@@ -125,6 +125,12 @@
             "activityId": "act-10",
             "rating": 5,
             "comment": "I would also like to say thank you to all your staff! I would gladly pay over 600 dollars for planet. Planet was worth a fortune to my company. After using planet my business skyrocketed!"
+        },
+        {
+            "id": "rev-22",
+            "locationId": "loc-1",
+            "rating": 3,
+            "comment": "I would also like to say thank you to all your staff! I would gladly pay over 600 dollars for planet. Planet was worth a fortune to my company. After using planet my business skyrocketed!"
         }
     ]
 }
