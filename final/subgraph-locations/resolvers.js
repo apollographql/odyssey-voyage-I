@@ -13,14 +13,8 @@ const resolvers = {
     },
     stats: ({ id }, _, { dataSources }) => {
       return dataSources.locationsAPI.getLocation(id)
-    } 
-  },
-  ActivityStats: {
-    lengthOfDay: ({ locationId }, _, { dataSources }) => {
-      const { lengthOfDay } =  dataSources.locationsAPI.getLocation(locationId)
-      return lengthOfDay
     }
-  } 
+  }
 };
 
 module.exports = resolvers;

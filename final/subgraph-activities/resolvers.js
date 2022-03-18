@@ -25,11 +25,12 @@ const resolvers = {
     }
   },
   ActivityStats: {
-    exosuitRequired: ({ averageTemperature, gravity }) => {
+    exosuitRequired({ averageTemperature, gravity }) {
       const hasExtremeTemp = averageTemperature < 0 || averageTemperature > 50
       const hasExtremeGravity = gravity < 4 || gravity > 9
+      // an exosuit is only required if the activity has extreme temperatures or extreme gravity
       return hasExtremeTemp || hasExtremeGravity
-    } 
+    }
   }
 }
 

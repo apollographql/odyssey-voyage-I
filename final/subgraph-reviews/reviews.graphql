@@ -6,7 +6,7 @@ type Mutation {
   submitReview(review: ReviewInput): SubmitReviewResponse
 }
 
-type Location @key(fields: "id") {
+type Location implements Attraction @key(fields: "id") {
   id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
@@ -14,7 +14,15 @@ type Location @key(fields: "id") {
   reviews: [Review]!
 }
 
-type Activity @key(fields: "id") {
+type Activity implements Attraction @key(fields: "id") {
+  id: ID! 
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews for this attraction"
+  reviews: [Review]!
+}
+
+interface Attraction {
   id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
@@ -22,7 +30,6 @@ type Activity @key(fields: "id") {
   reviews: [Review]!
 }
 
-union Reviewable = Location | Activity
 
 type Review {
   id: ID!
@@ -31,7 +38,7 @@ type Review {
   "A number from 1 - 5 with 1 being lowest and 5 being highest"
   rating: Int
   "The attraction the review is about"
-  attraction: Reviewable
+  attraction: Attraction
 }
 
 input ReviewInput {

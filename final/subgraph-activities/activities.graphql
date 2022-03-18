@@ -5,37 +5,37 @@ type Query {
   activity(id: ID!): Activity
 }
 
+enum Terrain {
+  TERRESTRIAL
+  AERIAL
+  AQUATIC
+  GALACTIC
+}
+
 interface Stats {
   "The average temperature, in Fahrenheit"
   averageTemperature: Int!
   "The strength of the gravity field, in g units"
   gravity: Float
+  "The length of day, in minutes"
+  lengthOfDay: Int!
   "The minimum age in years for participation on this attraction"
   minimumAge: Int!
 }
 
-type ActivityStats implements Stats @key(fields: "id locationId"){
-  id: ID!
-  "The activity's location ID"
-  locationId: ID!
+type ActivityStats implements Stats {
   "The average temperature, in Fahrenheit"
   averageTemperature: Int!
   "The strength of the gravity field, in g units"
   gravity: Float
+  "The length of day, in minutes"
+  lengthOfDay: Int!
   "The minimum age in years for participation on this attraction"
   minimumAge: Int!
   "Whether or not an exosuit is required for this activity"
   exosuitRequired: Boolean!
   "How many people this activity can accommodate at once"
   groupSize: Int!
-}
-
-
-enum Terrain {
-  TERRESTRIAL
-  AERIAL
-  AQUATIC
-  GALACTIC
 }
 
 interface Attraction {
