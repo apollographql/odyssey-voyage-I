@@ -10,7 +10,7 @@ type Location @key(fields: "id") {
   id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
-  "All submitted reviews about this location"
+  "All submitted reviews for this attraction"
   reviews: [Review]!
 }
 
@@ -18,7 +18,7 @@ type Activity @key(fields: "id") {
   id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
-  "All submitted reviews about this activity"
+  "All submitted reviews for this attraction"
   reviews: [Review]!
 }
 

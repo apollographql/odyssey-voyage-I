@@ -16,7 +16,7 @@ extend type Location implements Attraction @key(fields: "id") {
   photo: String! @external
   "The calculated overall rating based on all reviews"
   overallRating: Float
-  "All submitted reviews about this location"
+  "All submitted reviews for this attraction"
   reviews: [Review]!
 }
 
