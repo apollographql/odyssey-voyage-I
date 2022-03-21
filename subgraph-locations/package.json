@@ -6,6 +6,9 @@
   "scripts": {
     "start": "nodemon ."
   },
+  "nodemonConfig": {
+    "ext": "*.js, *.graphql"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
