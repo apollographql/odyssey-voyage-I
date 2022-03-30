@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "npm run install-all",
     "install-all": "node utils/install.js",
-    "upgrade-subgraphs": "node utils/upgrade-subgraphs.js"
+    "upgrade-subgraphs": "node utils/upgrade-subgraphs.js",
+    "publish": "echo 'Enter APOLLO_GRAPH_REF:' && read graphRef && echo 'Enter subgraph name:' && read subgraph && rover subgraph publish $graphRef --name $subgraph --schema ./subgraph-$subgraph/$subgraph.graphql"
   },
   "repository": {
     "type": "git",
