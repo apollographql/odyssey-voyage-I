@@ -7,7 +7,7 @@
     "start": "nodemon ."
   },
   "nodemonConfig": {
-    "ext": "*.js, *.graphql"
+    "ext": "*.js, *.graphql, *.json"
   },
   "keywords": [],
   "author": "",
