@@ -17,6 +17,28 @@ enum Terrain {
   MAGMATIC
 }
 
+interface Stats {
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float!
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
+  minimumAge: Int
+}
+
+type LocationStats implements Stats {
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float!
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
+  minimumAge: Int
+}
+
 interface Attraction {
   id: ID!
   "The name of the attraction"
@@ -25,8 +47,6 @@ interface Attraction {
   description: String!
   "The attraction's main photo as a URL"
   photo: String!
-  "The minimum age in years for participation on this attraction"
-  minimumAge: Int
   "The terrain for an attraction"
   terrain: Terrain!
 }
@@ -39,8 +59,8 @@ type Location implements Attraction @key(fields: "id"){
   description: String!
   "The location's main photo as a URL"
   photo: String!
-  "The minimum age in years for participation on this attraction"
-  minimumAge: Int
   "The terrain for an attraction"
   terrain: Terrain!
+  "The location's stats"
+  stats: LocationStats!
 }
