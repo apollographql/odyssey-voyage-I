@@ -1,6 +1,6 @@
 import ReviewRating from '../components/ReviewRating';
 import Spinner from '../components/Spinner';
-// import StatsBar from '../components/StatsBar';
+import StatsBar from '../components/StatsBar';
 import SubmitReview from '../components/SubmitLocationReview';
 import {
   Box,
@@ -26,12 +26,12 @@ export const GET_LOCATION_DETAILS = gql`
       photo
       overallRating
       terrain
-      # stats {
-      #   gravity
-      #   averageTemperature
-      #   lengthOfDay
-      #   minimumAge
-      # }
+      stats {
+        gravity
+        averageTemperature
+        lengthOfDay
+        minimumAge
+      }
       reviews {
         id
         comment
@@ -56,8 +56,8 @@ export default function Location() {
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
   const {
-    // terrain,
-    // stats,
+    terrain,
+    stats,
     name,
     description,
     photo,
@@ -96,7 +96,7 @@ export default function Location() {
             </Flex>
           </Stack>
           <Stack>
-            {/* <StatsBar type="Location" stats={stats} terrain={terrain} /> */}
+            <StatsBar type="Location" stats={stats} terrain={terrain} />
             {!!activities.length && (
               <>
                 <Heading as="h2" size="md" mb="2" marginTop={8}>

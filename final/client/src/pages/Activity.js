@@ -1,8 +1,8 @@
+import BackLink from '../components/BackLink';
 import ReviewRating from '../components/ReviewRating';
 import Spinner from '../components/Spinner';
+import StatsBar from '../components/StatsBar';
 import SubmitReview from '../components/SubmitActivityReview';
-// import StatsBar from '../components/StatsBar';
-import BackLink from '../components/BackLink';
 import {
   Box,
   Flex,
@@ -27,14 +27,14 @@ export const GET_ACTIVITY_DETAILS = gql`
       photo
       overallRating
       terrain
-      # stats {
-      #   averageTemperature
-      #   gravity
-      #   lengthOfDay
-      #   exosuitRequired
-      #   minimumAge
-      #   groupSize
-      # }
+      stats {
+        averageTemperature
+        gravity
+        lengthOfDay
+        exosuitRequired
+        minimumAge
+        groupSize
+      }
       location {
         id
         name
@@ -64,8 +64,8 @@ export default function Activity() {
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
   const {
-    // terrain,
-    // stats,
+    terrain,
+    stats,
     name,
     description,
     photo,
@@ -118,7 +118,7 @@ export default function Activity() {
             </Flex>
           </Stack>
           <Stack>
-            {/* <StatsBar type="Activity" stats={stats} terrain={terrain} /> */}
+            <StatsBar type="Activity" stats={stats} terrain={terrain} />
             <Heading as="h2" size="md" mb="2" marginTop={8}>
               Explore more to do on {locationName}
             </Heading>
