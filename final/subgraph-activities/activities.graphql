@@ -1,0 +1,43 @@
+type Query {
+  "The full list of activities offered on Interplanetary Space Tourism departments locations"
+  activities: [Activity]
+  "The details of a specific activity"
+  activity(id: ID!): Activity
+}
+
+enum ActivityTerrain {
+  TERRESTRIAL
+  AERIAL
+  AQUATIC
+  GALACTIC
+}
+
+interface Attraction {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+}
+
+extend type Location @key(fields: "id") {
+  id: ID! @external
+  "The activities associated with a location"
+  activities: [Activity]
+}
+
+type Activity implements Attraction @key(fields: "id") {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+  "The activity's terrain"
+  terrain: ActivityTerrain!
+  "The activity's location"
+  location: Location
+}
