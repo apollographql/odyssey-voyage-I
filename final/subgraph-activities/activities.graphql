@@ -9,7 +9,7 @@ type Query {
   activity(id: ID!): Activity
 }
 
-enum ActivityTerrain {
+enum Terrain {
   TERRESTRIAL
   AERIAL
   AQUATIC
@@ -26,6 +26,8 @@ interface Attraction {
   photo: String!
   "The minimum age in years for participation on this attraction"
   minimumAge: Int!
+  "The terrain for an attraction"
+  terrain: Terrain!
 }
 
 type Location @key(fields: "id") {
@@ -44,8 +46,8 @@ type Activity implements Attraction @key(fields: "id") {
   photo: String!
   "The minimum age in years for participation on this attraction"
   minimumAge: Int!
-  "The activity's terrain"
-  terrain: ActivityTerrain!
+  "The terrain for an attraction"
+  terrain: Terrain!
   "The activity's location"
   location: Location
 }
