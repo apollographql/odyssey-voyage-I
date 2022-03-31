@@ -12,12 +12,6 @@ type Mutation {
 
 type Location implements Attraction @key(fields: "id") {
   id: ID!
-  "The name of the attraction"
-  name: String! @external
-  "A short description about the attraction"
-  description: String! @external
-  "The attraction's main photo as a URL"
-  photo: String! @external
   "The calculated overall rating based on all reviews"
   overallRating: Float
   "All submitted reviews for this attraction"
@@ -26,12 +20,6 @@ type Location implements Attraction @key(fields: "id") {
 
 type Activity implements Attraction @key(fields: "id") {
   id: ID!
-  "The name of the attraction"
-  name: String! @external
-  "A short description about the attraction"
-  description: String! @external
-  "The attraction's main photo as a URL"
-  photo: String! @external
   "The calculated overall rating based on all reviews"
   overallRating: Float
   "All submitted reviews for this attraction"
@@ -40,12 +28,10 @@ type Activity implements Attraction @key(fields: "id") {
 
 interface Attraction {
   id: ID!
-  "The name of the attraction"
-  name: String!
-  "A short description about the attraction"
-  description: String!
-  "The attraction's main photo as a URL"
-  photo: String!
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews for this attraction"
+  reviews: [Review]!
 }
 
 
