@@ -3,7 +3,7 @@
     { 
       "id": "act-1",
       "name": "Candycloud Paragliding",
-      "description": "A thing to do in the skies of 'Vinci'",
+      "description": "You can't go wrong with a sweet-scented tour of Vinci's atmosphere! Float gently through the billowing pastel clouds, reinvigorate your lungs with sugar-dusted air, and gaze down upon the mere mortals land-bound below you. You'll never want to come down! (And depending on the weather, you might not have a choice!)",
       "locationId": "loc-2",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646347435/odyssey/federation-course1/FlyBy%20illustrations/candycloudparagliding_mfemda.png",
       "terrain": "AERIAL",
@@ -15,7 +15,7 @@
     { 
       "id": "act-2",
       "name": "Cosmic Jacuzzi",
-      "description": "The most popular activity on 'Vinci'",
+      "description": "What better way to take in the cosmic vista of Vinci than from your own private jacuzzi? Stare out into the vast, fathomless void from the comfort of a warm, bubbly pool, nestled in the mouth of one of this planet's renowned volcanic mountains.",
       "locationId": "loc-2",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646347750/odyssey/federation-course1/FlyBy%20illustrations/cosmic-jacuzzi_v0be1n.png",
       "terrain": "AQUATIC",
@@ -28,7 +28,7 @@
     { 
       "id": "act-3",
       "name": "Acid Lake Diving",
-      "description": "There's not much to see on Krypton, but one thing you can do is take a tingly plunge into any one of the acid crater lakes sprinkled about the planet! It'll singe away any boredom you're feeling!",
+      "description": "There's not much to see on Krypton, but we've got one can't-miss attraction you'll want to write home about: take a tingly plunge into any one of the acid crater lakes sprinkled about the planet, and see how long your snorkel can last! We promise the experience will singe away any boredom you're feeling!",
       "locationId": "loc-4",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646347751/odyssey/federation-course1/FlyBy%20illustrations/acid-lake-diving_oibyo2.png",
       "terrain": "AQUATIC",
@@ -41,7 +41,7 @@
     { 
       "id": "act-4",
       "name": "Cave Spelunking",
-      "description": "Come explore the unknown, shadowy depths in the caves of Zenn-la! On this uncharted planet, you never know what you might discover next... Or what might discover YOU.",
+      "description": "Come explore the unknown, shadowy depths in the caves of Zenn-la! On this uncharted and mysterious planet, you never know what you might discover next... Or what might discover YOU.",
       "locationId": "loc-5",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646422132/odyssey/federation-course1/FlyBy%20illustrations/cave-spelunking_n5sbyt.png",
       "terrain": "TERRESTRIAL",
@@ -67,7 +67,7 @@
     {
       "id": "act-6",
       "name": "Intergalactic Lookout",
-      "description": "some stuffs about lookout",
+      "description": "We can't tell you too much about this one, because we're not sure ourselves. All we know is we met a strange Zenn-la platypus, who told us our fortunes and pointed us towards a strange blue shrub. Suddenly we were here, orbiting the planet from a lookout pod and... wait - where'd the door go?",
       "locationId": "loc-5",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646690337/odyssey/federation-course1/FlyBy%20illustrations/intergalactic-lookout_tsmiw2.png",
       "terrain": "GALACTIC",
@@ -80,7 +80,7 @@
     {
       "id": "act-7",
       "name": "Starry Ocean Expedition",
-      "description": "some stuffs about expedition",
+      "description": "A vacation isn't complete without some time in the water. Granted, you might not want to explore THIS ocean without some sort of protective gear - we recommend a full submarine! And that's what you'll get on this tour of the Starry Ocean on New Lemuria. Tighten the drain valves and seal up the hatch, because we're going 20,000 leagues deep!",
       "locationId": "loc-1",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646777282/odyssey/federation-course1/FlyBy%20illustrations/starry-ocean-expedition_gnsczg.png",
       "terrain": "AQUATIC",
@@ -93,7 +93,7 @@
     {
       "id": "act-8",
       "name": "Hike to the top of Tentacle Mountain",
-      "description": "some stuffs about hike",
+      "description": "Everyone loves hiking... right? The brisk air, the heart-pumping exercise, the great company, the colossal, rubbery tentacles grasping at your ankles...",
       "locationId": "loc-1",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646690455/odyssey/federation-course1/FlyBy%20illustrations/hike-tentacle-mountain_udxwkp.png",
       "terrain": "TERRESTRIAL",
@@ -106,7 +106,7 @@
     {
       "id": "act-9",
       "name": "Picnic at World's End",
-      "description": "some stuffs about picnic",
+      "description": "Have you ever seen the End of the World? Have you ever wanted to? Well, we've packaged up the experience for you anyway - complete with a picnic dinner! Bring your friends, family, acquaintances and enemies to World's End on Krypton. Sit back, sip on a beverage, and watch what happens. We promise you'll be blown away!",
       "locationId": "loc-4",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646690517/odyssey/federation-course1/FlyBy%20illustrations/picnic-edge-krypton_ilgfmg.png",
       "terrain": "TERRESTRIAL",
@@ -119,7 +119,7 @@
     {
       "id": "act-10",
       "name": "Zero-G Skiing",
-      "description": "some stuffs about skiing",
+      "description": "Adventure-seekers only! Couch potatoes beware! You won't die in an avalanche or be eaten by a bear, but this adventure is most definitely off-piste. We promise when you complete this star-studded, zero-G run, you'll be the coolest kid at the space lodge!",
       "locationId": "loc-3",
       "photo": "https://res.cloudinary.com/apollographql/image/upload/v1646777286/odyssey/federation-course1/FlyBy%20illustrations/zero-g-skiing_qqfqie.png",
       "terrain": "GALACTIC",
