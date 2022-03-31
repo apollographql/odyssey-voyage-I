@@ -1,7 +1,7 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0",
         import: ["@key", "@external"])
-        
+
 type Query {
   latestReviews: [Review!]!
 }
@@ -10,8 +10,8 @@ type Mutation {
   submitReview(review: ReviewInput): SubmitReviewResponse
 }
 
-extend type Location implements Attraction @key(fields: "id") {
-  id: ID! @external
+type Location implements Attraction @key(fields: "id") {
+  id: ID!
   "The name of the attraction"
   name: String! @external
   "A short description about the attraction"
@@ -24,8 +24,8 @@ extend type Location implements Attraction @key(fields: "id") {
   reviews: [Review]!
 }
 
-extend type Activity implements Attraction @key(fields: "id") {
-  id: ID! @external
+type Activity implements Attraction @key(fields: "id") {
+  id: ID!
   "The name of the attraction"
   name: String! @external
   "A short description about the attraction"
