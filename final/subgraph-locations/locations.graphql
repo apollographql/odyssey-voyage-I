@@ -1,0 +1,66 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@external"])
+
+type Query {
+  "The full list of locations presented by the Interplanetary Space Tourism department"
+  locations: [Location!]!
+  "The details of a specific location"
+  location(id: ID!): Location
+}
+
+enum Terrain {
+  TERRESTRIAL
+  AERIAL
+  AQUATIC
+  GALACTIC
+  MAGMATIC
+}
+
+interface Stats {
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float!
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
+  minimumAge: Int
+}
+
+type LocationStats implements Stats {
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float!
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
+  minimumAge: Int
+}
+
+interface Attraction {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+  "The terrain for an attraction"
+  terrain: Terrain!
+}
+
+type Location implements Attraction @key(fields: "id"){
+  id: ID!
+  "The name of the location"
+  name: String!
+  "A short description about the location"
+  description: String!
+  "The location's main photo as a URL"
+  photo: String!
+  "The terrain for an attraction"
+  terrain: Terrain!
+  "The location's stats"
+  stats: LocationStats!
+}

@@ -1,0 +1,77 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@external"])
+
+type Query {
+  "The full list of activities offered on Interplanetary Space Tourism departments locations"
+  activities: [Activity]
+  "The details of a specific activity"
+  activity(id: ID!): Activity
+}
+
+enum Terrain {
+  TERRESTRIAL
+  AERIAL
+  AQUATIC
+  GALACTIC
+}
+
+interface Stats {
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
+  minimumAge: Int!
+}
+
+type ActivityStats implements Stats {
+  "The average temperature, in Fahrenheit"
+  averageTemperature: Int!
+  "The strength of the gravity field, in g units"
+  gravity: Float
+  "The length of day, in minutes"
+  lengthOfDay: Int!
+  "The minimum age in years for participation on this attraction"
+  minimumAge: Int!
+  "Whether or not an exosuit is required for this activity"
+  exosuitRequired: Boolean!
+  "How many people this activity can accommodate at once"
+  groupSize: Int!
+}
+
+interface Attraction {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+  "The terrain for an attraction"
+  terrain: Terrain!
+}
+
+type Location @key(fields: "id") {
+  id: ID!
+  "The activities associated with a location"
+  activities: [Activity]
+}
+
+type Activity implements Attraction @key(fields: "id") {
+  id: ID!
+  "The name of the attraction"
+  name: String!
+  "A short description about the attraction"
+  description: String!
+  "The attraction's main photo as a URL"
+  photo: String!
+  "The terrain for an attraction"
+  terrain: Terrain!
+  "The activity's location"
+  location: Location
+  "The activity's stats"
+  stats: ActivityStats!
+}
