@@ -28,10 +28,10 @@ jobs:
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
       - name: Publish locations subgraph to production registry
         run: |
-          rover subgraph publish $GRAPH_REF@current --schema ./subgraph-locations/locations.graphql --name locations
-      # - name: Publish activities subgraph to production registry
-      #   run: |
-      #     rover subgraph publish $GRAPH_REF@current --schema ./subgraph-activities/activities.graphql --name activities
+          rover subgraph publish $GRAPH_REF@current --schema ./final/subgraph-locations/locations.graphql --name locations
+      - name: Publish activities subgraph to production registry
+        run: |
+          rover subgraph publish $GRAPH_REF@current --schema ./final/subgraph-activities/activities.graphql --name activities
       - name: Publish reviews subgraph to production registry
         run: |
-          rover subgraph publish $GRAPH_REF@current --schema ./subgraph-reviews/reviews.graphql --name reviews
+          rover subgraph publish $GRAPH_REF@current --schema ./final/subgraph-reviews/reviews.graphql --name reviews
