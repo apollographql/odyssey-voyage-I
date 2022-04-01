@@ -37,10 +37,10 @@ jobs:
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
       - name: Run locations schema check against prod
         run: |
-          rover subgraph check ${GRAPH_REF}@current --schema ./subgraph-locations/locations.graphql --name locations
-      #- name: Run activities schema check against prod
-        # run: |
-        #   rover subgraph check ${GRAPH_REF}@current --schema ./subgraph-activities/activities.graphql --name activities
+          rover subgraph check ${GRAPH_REF}@current --schema ./final/subgraph-locations/locations.graphql --name locations
+      - name: Run activities schema check against prod
+        run: |
+          rover subgraph check ${GRAPH_REF}@current --schema ./final/subgraph-activities/activities.graphql --name activities
       - name: Run reviews schema check against prod
         run: |
-          rover subgraph check ${GRAPH_REF}@current --schema ./subgraph-reviews/reviews.graphql --name reviews
+          rover subgraph check ${GRAPH_REF}@current --schema ./final/subgraph-reviews/reviews.graphql --name reviews
