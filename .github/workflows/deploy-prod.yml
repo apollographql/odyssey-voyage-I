@@ -16,18 +16,18 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: flyby-lab-locations-sg
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          appdir: "subgraph-locations"
+          appdir: "final/subgraph-locations"
       - name: Deploy reviews subgraph
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: flyby-lab-reviews-sg
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          appdir: "subgraph-reviews"
+          appdir: "final/subgraph-reviews"
       - name: Deploy activities subgraph
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: flyby-lab-activities-sg
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          appdir: "subgraph-activities"
+          appdir: "final/subgraph-activities"
