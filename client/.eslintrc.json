@@ -5,7 +5,8 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "no-multi-spaces": ["error"]
+        "no-multi-spaces": ["error"],
+        "ESLINT_NO_DEV_ERRORS": "off"
     },
     "overrides": [
         {
