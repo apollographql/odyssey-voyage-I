@@ -4,7 +4,7 @@ type Query {
 }
 
 type Mutation {
-  submitReview(review: ReviewInput): SubmitReviewResponse
+  submitReview(locationReview: LocationReviewInput): SubmitReviewResponse
 }
 
 extend type Location @key(fields: "id") {
@@ -12,7 +12,7 @@ extend type Location @key(fields: "id") {
   "The calculated overall rating based on all reviews"
   overallRating: Float
   "All submitted reviews about this location"
-  reviews: [Review]!
+  reviewsForLocation: [Review]!
 }
 
 type Review {
@@ -25,7 +25,7 @@ type Review {
   location: Location
 }
 
-input ReviewInput {
+input LocationReviewInput {
   "Written text"
   comment: String!
   "A number from 1 - 5 with 1 being lowest and 5 being highest"
@@ -42,5 +42,5 @@ type SubmitReviewResponse {
   "Human-readable message for the UI"
   message: String!
   "Newly created review"
-  review: Review
+  locationReview: Review
 }

@@ -13,7 +13,7 @@ const resolvers = {
     overallRating({id}, _, {dataSources}) {
       return dataSources.reviewsAPI.getOverallRatingForLocation(id);
     },
-    reviews({id}, _, {dataSources}) {
+    reviewsForLocation({id}, _, {dataSources}) {
       return dataSources.reviewsAPI.getReviewsForLocation(id);
     }
   },
