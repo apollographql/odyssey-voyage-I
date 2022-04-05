@@ -7,12 +7,12 @@ import {GET_LOCATION_DETAILS} from '../pages/Location';
 import {gql, useMutation} from '@apollo/client';
 
 export const SUBMIT_REVIEW = gql`
-  mutation submitReview($review: ReviewInput) {
-    submitReview(review: $review) {
+  mutation submitReview($locationReview: LocationReviewInput) {
+    submitReview(locationReview: $locationReview) {
       code
       success
       message
-      review {
+      locationReview {
         id
         comment
         rating
@@ -29,7 +29,7 @@ export default function SubmitReview({locationId}) {
 
   const [submitReview] = useMutation(SUBMIT_REVIEW, {
     variables: {
-      review: {comment, rating: parseInt(rating, 10), locationId}
+      locationReview: {comment, rating: parseInt(rating, 10), locationId}
     },
     refetchQueries: [
       {query: GET_LOCATION_DETAILS, variables: {locationId}}, // DocumentNode object parsed with gql

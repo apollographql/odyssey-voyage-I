@@ -23,7 +23,7 @@ export const GET_LOCATION_DETAILS = gql`
       description
       photo
       overallRating
-      reviews {
+      reviewsForLocation {
         id
         comment
         rating
@@ -40,7 +40,7 @@ export default function Location() {
   });
   if (loading) return <Spinner />;
   if (error) return <Error error={error.message} />;
-  const {name, description, photo, reviews, overallRating} = data?.location;
+  const {name, description, photo, reviewsForLocation: reviews, overallRating} = data?.location;
   return (
     <>
       {data && (

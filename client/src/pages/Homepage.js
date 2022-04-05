@@ -21,7 +21,7 @@ export const GET_LATEST_REVIEWS_AND_LOCATIONS = gql`
       description
       overallRating
       photo
-      reviews {
+      reviewsForLocation {
         id
         comment
         rating

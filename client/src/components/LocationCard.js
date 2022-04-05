@@ -16,7 +16,7 @@ export default function LocationCard({
   name,
   photo,
   overallRating,
-  reviews = []
+  reviewsForLocation: reviews = []
 }) {
   const {comment} = reviews[0] ?? {};
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -68,5 +68,5 @@ LocationCard.propTypes = {
   name: PropTypes.string,
   photo: PropTypes.string,
   overallRating: PropTypes.number,
-  reviews: PropTypes.array
+  reviewsForLocation: PropTypes.array
 };
