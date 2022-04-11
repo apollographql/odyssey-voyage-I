@@ -1,13 +1,13 @@
 const resolvers = {
   Query: {
-    latestReviews(_, __, {dataSources}) {
+    latestReviews: (_, __, {dataSources}) => {
       return dataSources.reviewsAPI.getLatestReviews();
     }
   },
   Mutation: {
-    submitReview(_, {review}, {dataSources}) {
-      const newReview = dataSources.reviewsAPI.submitReviewForLocation(review);
-      return {code: 200, success: true, message: 'success', review: newReview};
+    submitReview: (_, {locationReview}, {dataSources}) => {
+      const newReview = dataSources.reviewsAPI.submitReviewForLocation(locationReview);
+      return {code: 200, success: true, message: 'success', locationReview: newReview};
     }
   }
 };
