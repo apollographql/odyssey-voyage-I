@@ -8,7 +8,7 @@ type Mutation {
 }
 
 extend type Location @key(fields: "id") {
-  id: ID! @external
+  id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
   "All submitted reviews about this location"
