@@ -1,10 +1,11 @@
 const {ApolloServer, gql} = require('apollo-server');
-const {buildSubgraphSchema} = require('@apollo/subgraph');
 const {readFileSync} = require('fs');
+const {buildSubgraphSchema} = require('@apollo/subgraph');
 
 const typeDefs = gql(readFileSync('./locations.graphql', {encoding: 'utf-8'}));
+
 const resolvers = require('./resolvers');
-const LocationsAPI = require('./datasources/LocationsAPI');
+const LocationsAPI = require('./datasources/LocationsApi');
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({typeDefs, resolvers}),
