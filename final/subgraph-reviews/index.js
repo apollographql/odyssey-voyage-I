@@ -4,7 +4,7 @@ const {readFileSync} = require('fs');
 
 const typeDefs = gql(readFileSync('./reviews.graphql', {encoding: 'utf-8'}));
 const resolvers = require('./resolvers');
-const ReviewsAPI = require('./datasources/ReviewsAPI');
+const ReviewsAPI = require('./datasources/ReviewsApi');
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({typeDefs, resolvers}),
