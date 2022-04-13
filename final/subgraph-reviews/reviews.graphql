@@ -7,7 +7,7 @@ type Mutation {
   submitReview(locationReview: LocationReviewInput): SubmitReviewResponse
 }
 
-extend type Location @key(fields: "id") {
+type Location @key(fields: "id") {
   id: ID!
   "The calculated overall rating based on all reviews"
   overallRating: Float
