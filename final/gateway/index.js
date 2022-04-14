@@ -8,10 +8,8 @@ const server = new ApolloServer({
   gateway
 });
 
-const port = process.env.PORT || 4000;
-
 server
-  .listen({port})
+  .listen()
   .then(({url}) => {
     console.log(`🚀 Gateway ready at ${url}`);
   })
