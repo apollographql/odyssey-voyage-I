@@ -10,6 +10,9 @@ const resolvers = {
     }
   },
   Location: {
+    __resolveReference: (location) => {
+      return location
+    },
     overallRating: ({id}, _, {dataSources}) => {
       return dataSources.reviewsAPI.getOverallRatingForLocation(id);
     },
