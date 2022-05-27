@@ -35,7 +35,11 @@ export const GET_LOCATION_DETAILS = gql`
 export default function Location() {
   const {id} = useParams();
 
-  const {loading, error, data} = useQuery(GET_LOCATION_DETAILS, {
+  const {
+    loading,
+    error,
+    data = {}
+  } = useQuery(GET_LOCATION_DETAILS, {
     variables: {locationId: id}
   });
   if (loading) return <Spinner />;
@@ -46,7 +50,7 @@ export default function Location() {
     photo,
     reviewsForLocation: reviews,
     overallRating
-  } = data?.location;
+  } = data?.location || {};
   return (
     <>
       {data && (
