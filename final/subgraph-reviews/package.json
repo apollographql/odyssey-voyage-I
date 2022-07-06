@@ -1,0 +1,22 @@
+{
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon . -e js,graphql"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "apollo-server": "^3.9.0",
+    "fs": "0.0.1-security",
+    "graphql": "^16.5.0",
+    "nodemon": "^2.0.13"
+  }
+}
