@@ -9,6 +9,11 @@ const resolvers = {
       const newReview = dataSources.reviewsAPI.submitReviewForLocation(locationReview);
       return {code: 200, success: true, message: 'success', locationReview: newReview};
     }
+  },
+  Review: {
+    location: ({locationId}) => {
+      return {id: locationId};
+    }
   }
 };
 
