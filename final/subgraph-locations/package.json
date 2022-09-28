@@ -16,7 +16,6 @@
   "dependencies": {
     "@apollo/subgraph": "^2.0.5",
     "apollo-server": "^3.9.0",
-    "fs": "0.0.1-security",
     "graphql": "^16.5.0",
     "nodemon": "^2.0.13"
   }
