@@ -11,7 +11,7 @@
   "license": "ISC",
   "engines": {
     "npm": ">=6.0.0",
-    "node": ">=14.0.0"
+    "node": ">=14.0.0 <17"
   },
   "dependencies": {
     "apollo-server": "^3.9.0",
