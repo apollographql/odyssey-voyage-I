@@ -41,12 +41,12 @@ Publish the subgraph schemas to apollo studio
 To run the servers in the `final` folder:
 
 1. Open a new terminal window, and navigate to `final/router`.
-1.  Run `APOLLO_KEY=<APOLLO_KEY> APOLLO_GRAPH_REF=<APOLLO_GRAPH_REF> ./router --config config.yaml`. This will start the router at `http://127.0.0.1:4000/` and allow access from `localhost:3000` for the client.
-1.  Open another new terminal window, and navigate to `final/subgraph-locations`.
-1.  Run `npm install && npm start` again. This will install all packages for the `locations` subgraph, then start the subgraph at `http://localhost:4001`.
-1.  Open a third new terminal window, and navigate to `final/subgraph-reviews`.
-1.  Run `npm install && npm start` again. This will install all packages for the `reviews` subgraph, then start the subgraph at `http://localhost:4002`.
-1.  In a web browser, open Apollo Studio Sandbox for `http://localhost:4000`. You should be able to run queries against your gateway server. Some test queries are included in the following section.
+1. Run `APOLLO_KEY=<APOLLO_KEY> APOLLO_GRAPH_REF=<APOLLO_GRAPH_REF> ./router --config config.yaml`. This will start the router at `http://127.0.0.1:4000/` and allow access from `localhost:3000` for the client.
+1. Open another new terminal window, and navigate to `final/subgraph-locations`.
+1. Run `npm install && npm start` again. This will install all packages for the `locations` subgraph, then start the subgraph at `http://localhost:4001`.
+1. Open a third new terminal window, and navigate to `final/subgraph-reviews`.
+1. Run `npm install && npm start` again. This will install all packages for the `reviews` subgraph, then start the subgraph at `http://localhost:4002`.
+1. In a web browser, open Apollo Studio Sandbox for `http://localhost:4000`. You should be able to run queries against your gateway server. Some test queries are included in the following section.
 
 ### Queries
 
