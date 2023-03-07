@@ -12,7 +12,7 @@ The course will walk you step by step through how to implement the features you 
 
 You will work in three main folders:
 
-- `gateway`
+- `router`
 - `subgraph-locations`
 - `subgraph-reviews`
 
@@ -31,10 +31,17 @@ To run the client:
 
 The repo also includes a `final` folder, to show what your code should look like once you've finished the course. You can use it to check your work if you get stuck.
 
+Publish the subgraph schemas to Apollo Studio
+1. Run `rover config auth` to set the `APOLLO_KEY` value 
+1. Navigate to `final/subgraph-locations`.
+1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name locations --schema locations.graphql --routing-url http://localhost:4001`
+1. Navigate to `final/subgraph-reviews`.
+1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name reviews --schema locations.reviews --routing-url http://localhost:4001`
+
 To run the servers in the `final` folder:
 
-1. Open a new terminal window, and navigate to `final/gateway`.
-1. Run `npm install && npm start`. This will install all packages in the main server, then start the main server at `http://localhost:4000`.
+1. Open a new terminal window, and navigate to `final/router`.
+1. Run `APOLLO_KEY=<APOLLO_KEY> APOLLO_GRAPH_REF=<APOLLO_GRAPH_REF> ./router --config config.yaml`. This will start the router at `http://127.0.0.1:4000/` and allow access from `localhost:3000` for the client.
 1. Open another new terminal window, and navigate to `final/subgraph-locations`.
 1. Run `npm install && npm start` again. This will install all packages for the `locations` subgraph, then start the subgraph at `http://localhost:4001`.
 1. Open a third new terminal window, and navigate to `final/subgraph-reviews`.
