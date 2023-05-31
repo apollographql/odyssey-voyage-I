@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "npm": ">=6.0.0",
-    "node": ">=14.0.0 <17.0.0"
+    "node": ">=14.0.0 <=18"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -53,5 +53,8 @@
     "@trevorblades/eslint-config": "^7.2.8",
     "eslint": "^7.32.0",
     "eslint-plugin-jsx-a11y": "^6.5.1"
+  },
+  "overrides": {
+    "nth-check": "2.0.1"
   }
 }
