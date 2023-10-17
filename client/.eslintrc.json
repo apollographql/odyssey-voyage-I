@@ -5,6 +5,12 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
+        "prettier/prettier": [
+           "error",
+           {
+              "endOfLine": "auto"
+           }
+        ],
         "no-multi-spaces": ["error"]
     },
     "overrides": [
