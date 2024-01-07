@@ -1,0 +1,32 @@
+{
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "nodemon . -e js,graphql",
+    "codegen": "graphql-codegen --config codegen.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=14.0.0 <=20"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.9.3",
+    "@apollo/subgraph": "^2.5.7",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@graphql-codegen/typescript-resolvers": "4.0.1",
+    "typescript": "^5.3.2",
+    "@graphql-codegen/typescript-document-nodes": "4.0.1",
+    "@graphql-codegen/introspection": "4.0.0"
+  }
+}

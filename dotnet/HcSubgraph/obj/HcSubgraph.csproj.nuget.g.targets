@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)system.text.json/8.0.0-rc.2.23479.6/buildTransitive/net6.0/System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json/8.0.0-rc.2.23479.6/buildTransitive/net6.0/System.Text.Json.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.options/8.0.0-rc.2.23479.6/buildTransitive/net6.0/Microsoft.Extensions.Options.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.options/8.0.0-rc.2.23479.6/buildTransitive/net6.0/Microsoft.Extensions.Options.targets')" />
+    <Import Project="$(NuGetPackageRoot)hotchocolate.aspnetcore/13.7.0/build/HotChocolate.AspNetCore.targets" Condition="Exists('$(NuGetPackageRoot)hotchocolate.aspnetcore/13.7.0/build/HotChocolate.AspNetCore.targets')" />
+    <Import Project="$(NuGetPackageRoot)hotchocolate.apollofederation/13.7.0/build/HotChocolate.ApolloFederation.targets" Condition="Exists('$(NuGetPackageRoot)hotchocolate.apollofederation/13.7.0/build/HotChocolate.ApolloFederation.targets')" />
+  </ImportGroup>
+</Project>
