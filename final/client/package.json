@@ -2,34 +2,32 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "npm": ">=6.0.0",
-    "node": ">=14.0.0 <=20"
-  },
+  "type": "module",
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@apollo/client": "^3.7.16",
     "@apollo/space-kit": "^9.3.1",
-    "@chakra-ui/react": "^1.6.10",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
+    "@chakra-ui/react": "2.8",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@vitejs/plugin-react": "^4.3.3",
     "framer-motion": "^4.1.17",
-    "graphql": "^16.5.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "graphql": "^16.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^5.0.1",
+    "vite": "^5.4.10",
+    "vite-tsconfig-paths": "^5.0.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "vitest",
+    "start": "vite",
+    "build": "vite build"
   },
   "browserslist": {
     "production": [
@@ -45,8 +43,5 @@
   },
   "overrides": {
     "nth-check": "2.0.1"
-  },  
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
