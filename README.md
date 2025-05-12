@@ -36,7 +36,7 @@ Publish the subgraph schemas to Apollo Studio
 1. Navigate to `final/subgraph-locations`.
 1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name locations --schema locations.graphql --routing-url http://localhost:4001`
 1. Navigate to `final/subgraph-reviews`.
-1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name reviews --schema locations.reviews --routing-url http://localhost:4001`
+1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name reviews --schema reviews.graphql --routing-url http://localhost:4002`
 
 To run the servers in the `final` folder:
 
