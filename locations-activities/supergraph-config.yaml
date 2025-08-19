@@ -1,0 +1,11 @@
+federation_version: 2
+subgraphs:
+  locations:
+    routing_url: http://localhost:7778
+    schema:
+      file: ./subgraph-locations/locations.graphql
+  activities:
+    # Connector-based subgraph: no server needed
+    routing_url: http://ignore
+    schema:
+      file: ./subgraph-activities/activities.graphql

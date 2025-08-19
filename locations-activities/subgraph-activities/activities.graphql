@@ -1,0 +1,58 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.11", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/connect/v0.1", import: ["@source", "@connect"])
+  @source(
+    name: "activities_api"
+    http: { baseURL: "http://localhost:7777" }
+  )
+
+type Query {
+  activities: [Activity!]!
+  @connect(
+    source: "activities_api"
+    http: { GET: "/activities" }
+    selection: """
+    id
+    name
+    locationId
+    """
+  )
+
+  activity(id: ID!): Activity
+    @connect(
+      source: "activities_api"
+      http: { GET: "/activity/{$args.id}" }
+      selection: """
+        id
+        name
+        description
+        price
+        locationId
+      """
+      entity: true
+    )
+}
+
+type Activity @key(fields: "id") {
+  id: ID!
+  name: String!
+  description: String!
+  price: Int!
+  locationId: ID!
+}
+
+type Location @key(fields: "id") {
+  id: ID!
+  activities: [Activity!]!
+    @connect(
+      source: "activities_api"
+      http: { GET: "/activities/location/{$this.id}" }
+      selection: """
+        id
+        name
+        description
+        price
+        locationId
+      """
+    )
+}
