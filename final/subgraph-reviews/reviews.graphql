@@ -1,4 +1,4 @@
-extend schema @link(url: "https://specs.apollo.dev/federation/v2.7", import: ["@key"])
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.12", import: ["@key"])
 
 type Query {
   "The three latest reviews submitted for FlyBy's locations"

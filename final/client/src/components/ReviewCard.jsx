@@ -22,7 +22,7 @@ export default function ReviewCard({rating, comment, location}) {
       as={Link}
       to={`/location/${location.id}`}
     >
-      <Stack spacing="32px" my="2" direction="column" justify="space-between">
+      <Stack gap="32px" my="2" direction="column" justify="space-between">
         <ReviewRating isLight size={20} rating={rating} />
         <Heading as="h3" size="md">
           {location.name}

@@ -5,7 +5,7 @@ import {Container} from '@chakra-ui/react';
 export default function Layout({
   noNav,
   children,
-  containerSize = 'container.xl'
+  containerSize = '1280px'
 }) {
   return (
     <>
