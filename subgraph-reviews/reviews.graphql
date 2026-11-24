@@ -17,8 +17,12 @@ type Review {
   location: Location
 }
 
-type Location @key(fields: "id", resolvable: false) {
+type Location @key(fields: "id") {
   id: ID!
+  "The calculated overall rating based on all reviews"
+  overallRating: Float
+  "All submitted reviews about this location"
+  reviewsForLocation: [Review]!
 }
 
 type Mutation {

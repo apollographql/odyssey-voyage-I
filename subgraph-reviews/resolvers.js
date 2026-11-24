@@ -4,6 +4,18 @@ const resolvers = {
       return dataSources.reviewsAPI.getLatestReviews();
     }
   },
+  Location: {
+    // this reference resolver is optional - Apollo Server provides it for us by default
+    __resolveReference: (referencedLocation) => {
+      return referencedLocation;
+    },
+    overallRating: ({id}, _, {dataSources}) => {
+      return dataSources.reviewsAPI.getOverallRatingForLocation(id);
+    },
+    reviewsForLocation: ({id}, _, {dataSources}) => {
+      return dataSources.reviewsAPI.getReviewsForLocation(id);
+    },
+  },
   Review: {
     location: ({locationId}) => {
       return {id: locationId};
