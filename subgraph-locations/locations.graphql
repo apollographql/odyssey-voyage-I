@@ -9,7 +9,7 @@ type Query {
   location(id: ID!): Location
 }
 
-type Location {
+type Location @key(fields: "id") {
   id: ID!
   "The name of the location"
   name: String!
