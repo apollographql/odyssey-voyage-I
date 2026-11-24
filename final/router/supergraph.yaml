@@ -1,4 +1,4 @@
-federation_version: =2.12.0
+federation_version: =2.15.7
 subgraphs:
   locations:
     routing_url: http://localhost:4001
