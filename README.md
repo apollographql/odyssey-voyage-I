@@ -32,7 +32,7 @@ To run the client:
 The repo also includes a `final` folder, to show what your code should look like once you've finished the course. You can use it to check your work if you get stuck.
 
 Publish the subgraph schemas to Apollo Studio
-1. Run `rover config auth` to set the `APOLLO_KEY` value 
+1. Run `rover auth login` to authenticate Rover with your Apollo account
 1. Navigate to `final/subgraph-locations`.
 1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name locations --schema locations.graphql --routing-url http://localhost:4001`
 1. Navigate to `final/subgraph-reviews`.
