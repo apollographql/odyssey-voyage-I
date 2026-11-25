@@ -3,7 +3,7 @@ import React from 'react';
 import {Box, Heading, Text, VStack} from '@chakra-ui/react';
 
 export const Error = ({children, code, error}) => (
-  <VStack spacing="12">
+  <VStack gap="12">
     <VStack textAlign="center">
       <Heading size="4xl">{code}</Heading>
       <Heading fontSize="3xl">Houston, something went wrong on our end</Heading>

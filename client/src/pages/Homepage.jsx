@@ -11,7 +11,8 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react';
-import {gql, useQuery} from '@apollo/client';
+import {gql} from '@apollo/client';
+import {useQuery} from '@apollo/client/react';
 
 export const GET_LATEST_REVIEWS_AND_LOCATIONS = gql`
   query GetLatestReviewsAndLocations {
@@ -42,19 +43,19 @@ export default function HomePage() {
   const {error, loading, data} = useQuery(GET_LATEST_REVIEWS_AND_LOCATIONS);
   if (error) return <Error error={error.message} />;
   return (
-    <Stack direction="column" spacing="12">
-      <VStack direction="column" spacing="2" py="10">
+    <Stack direction="column" gap="12">
+      <VStack direction="column" gap="2" py="10">
         <Heading size="2xl">Find yourself in a galaxy far, far away</Heading>
         <Text fontSize="2xl">
           Let&apos;s find the right place for you! Check out what other
           cosmonauts are saying.
         </Text>
       </VStack>
-      <Stack direction="column" spacing="4">
+      <Stack direction="column" gap="4">
         <Heading as="h2" size="lg">
           Latest Reviews
         </Heading>
-        <SimpleGrid columns={[1, null, 3]} spacing={4}>
+        <SimpleGrid columns={[1, null, 3]} gap={4}>
           {loading
             ? [...Array(3)].map((_, i) => (
                 <Skeleton
@@ -69,14 +70,14 @@ export default function HomePage() {
               ))}
         </SimpleGrid>
       </Stack>
-      <Stack direction="column" spacing="4">
+      <Stack direction="column" gap="4">
         <Heading as="h2" size="lg">
           Locations
         </Heading>
         {loading ? (
           <Spinner />
         ) : (
-          <SimpleGrid columns={[1, null, 2]} spacing={4}>
+          <SimpleGrid columns={[1, null, 2]} gap={4}>
             {data?.locations.map(location => (
               <LocationCard key={location.id} {...location} />
             ))}

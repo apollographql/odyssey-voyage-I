@@ -1,10 +1,11 @@
-import Button from './Button.js';
+import Button from './Button';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import ReviewRating from './ReviewRating';
 import {Flex, Stack, Text, Textarea} from '@chakra-ui/react';
 import {GET_LOCATION_DETAILS} from '../pages/Location';
-import {gql, useMutation} from '@apollo/client';
+import {gql} from '@apollo/client';
+import {useMutation} from '@apollo/client/react';
 
 export const SUBMIT_REVIEW = gql`
   mutation submitReview($locationReview: LocationReviewInput) {
@@ -40,7 +41,7 @@ export default function SubmitReview({locationId}) {
 
   return !hasSubmittedForm ? (
     <Stack>
-      <Stack direction="column" spacing="4">
+      <Stack direction="column" gap="4">
         <ReviewRating rating={rating} setReviewsInput={setRating} edit />
         <Textarea
           placeholder="Write your review here"
@@ -49,9 +50,8 @@ export default function SubmitReview({locationId}) {
           onChange={handleChange}
         />
       </Stack>
-      ) :
       <Flex justify="right">
-        <Button isDisabled={!rating || !comment} onClick={submitReview}>
+        <Button disabled={!rating || !comment} onClick={submitReview}>
           Submit Review
         </Button>
       </Flex>

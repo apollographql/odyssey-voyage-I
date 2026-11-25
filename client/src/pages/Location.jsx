@@ -9,10 +9,11 @@ import {
   Heading,
   Image,
   Stack,
-  StackDivider,
+  StackSeparator,
   Text
 } from '@chakra-ui/react';
-import {gql, useQuery} from '@apollo/client';
+import {gql} from '@apollo/client';
+import {useQuery} from '@apollo/client/react';
 import {useParams} from 'react-router-dom';
 
 export const GET_LOCATION_DETAILS = gql`
@@ -54,7 +55,7 @@ export default function Location() {
   return (
     <>
       {data && (
-        <Stack direction="column" px="12" spacing="6" mb="12">
+        <Stack direction="column" px="12" gap="6" mb="12">
           <Heading as="h1" size="lg">
             {name}
           </Heading>
@@ -62,7 +63,7 @@ export default function Location() {
             <ReviewRating isHalf size={16} rating={overallRating || 0} />{' '}
             <div>({reviews.length})</div>
           </HStack>
-          <Stack direction="column" spacing="6">
+          <Stack direction="column" gap="6">
             <Image
               src={photo}
               alt={name}
@@ -81,11 +82,11 @@ export default function Location() {
             </Flex>
           </Stack>
           <Flex direction="row">
-            <Stack flex="1" direction="column" spacing="12">
+            <Stack flex="1" direction="column" gap="12">
               <Stack
                 direction="column"
-                spacing="4"
-                divider={<StackDivider borderColor="gray.200" />}
+                gap="4"
+                separator={<StackSeparator borderColor="gray.200" />}
               >
                 <Heading as="h2" size="md" mb="2" marginTop={8}>
                   What other space travelers have to say
@@ -96,7 +97,7 @@ export default function Location() {
                   reviews.map(({comment, rating}, i) => (
                     <Stack
                       direction="column"
-                      spacing="1"
+                      gap="1"
                       key={`${i}-${rating}`}
                       py="8"
                     >

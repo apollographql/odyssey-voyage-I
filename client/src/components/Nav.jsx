@@ -4,10 +4,12 @@ import {Logo} from './Logo';
 
 export default function Nav() {
   return (
-    <Box as={Link} to="/">
-      <HStack p="4">
-        <Logo />
-      </HStack>
+    <Box asChild>
+      <Link to="/">
+        <HStack p="4">
+          <Logo />
+        </HStack>
+      </Link>
     </Box>
   );
 }

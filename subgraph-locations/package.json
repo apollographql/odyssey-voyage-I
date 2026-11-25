@@ -11,12 +11,12 @@
   "license": "ISC",
   "engines": {
     "npm": ">=6.0.0",
-    "node": ">=14.0.0 <=20"
+    "node": ">=22"
   },
   "dependencies": {
-    "@apollo/server": "^4.9.3",
-    "graphql": "^16.8.1",
-    "graphql-tag": "^2.12.6",
-    "nodemon": "^3.1.7"
+    "@apollo/server": "^5.5.1",
+    "graphql": "^16.11.0",
+    "graphql-tag": "^2.12.7",
+    "nodemon": "^3.1.14"
   }
 }
